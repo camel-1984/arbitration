@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Прогноз цены продажи</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Прогноз цены продажи автомобиля на торгах</h1>
+    <p class="subtitle">По результатам завершённых торгов по банкротству. Ориентир для типичного автомобиля с указанными характеристиками, решение остаётся за управляющим.</p>
+  </header>
+
+  <main class="layout">
+    <section class="card">
+      <h2>1. Описание лота</h2>
+      <label for="description" class="hint">Вставьте текст описания, характеристики будут заполнены автоматически. Проверьте и исправьте их перед оценкой.</label>
+      <textarea id="description" rows="6" placeholder="Легковой автомобиль, марка: KIA, модель: RIO, год изготовления: 2015, ..."></textarea>
+      <button type="button" id="extract-btn" class="secondary">Заполнить из описания</button>
+    </section>
+
+    <form id="lot-form" class="card">
+      <h2>2. Характеристики</h2>
+      <div class="grid">
+        <label>Марка
+          <input name="make" list="makes" required autocomplete="off">
+          <datalist id="makes"></datalist>
+        </label>
+        <label>Модель
+          <input name="model" required autocomplete="off">
+        </label>
+        <label>Год выпуска
+          <input name="year" type="number" min="1960" max="2030" required>
+        </label>
+        <label>Регион
+          <input name="region" placeholder="не указан">
+        </label>
+        <label>Мощность, л.с.
+          <input name="power_hp" type="number" min="30" max="800" step="0.1" placeholder="не указана">
+        </label>
+        <label>Объём двигателя, куб. см
+          <input name="engine_cc" type="number" min="600" max="8000" placeholder="не указан">
+        </label>
+      </div>
+
+      <fieldset class="flags">
+        <legend>Состояние и обременения</legend>
+        <label title="Не на ходу, не заводится, требуется ремонт или замена двигателя или КПП, капитальный ремонт">
+          <input type="checkbox" name="major_defect"> Серьёзная техническая неисправность
+        </label>
+        <label title="ДТП, вмятины, коррозия, деформация, разбитые стёкла и детали. Мелкие сколы не считаются">
+          <input type="checkbox" name="damaged"> Повреждения кузова
+        </label>
+        <label title="Нет ключей, ПТС, СТС или других документов">
+          <input type="checkbox" name="no_keys_or_docs"> Нет ключей или документов
+        </label>
+        <label title="Имущество в залоге">
+          <input type="checkbox" name="pledge"> Залог
+        </label>
+        <label title="Арест, запрет на регистрационные действия, ограничения приставов">
+          <input type="checkbox" name="arrest_or_ban"> Арест или запрет
+        </label>
+        <label title="Местонахождение неизвестно, ТС не передано управляющему, осмотр невозможен">
+          <input type="checkbox" name="location_unknown"> Местонахождение неизвестно
+        </label>
+      </fieldset>
+
+      <button type="submit" class="primary">Оценить</button>
+    </form>
+
+    <section id="result" class="card hidden" aria-live="polite">
+      <h2>3. Оценка</h2>
+      <p id="demo-note" class="warning hidden">Демо-режим: сервер модели не подключён, показаны условные данные.</p>
+      <ul class="quartiles">
+        <li><span class="share">25%</span> похожих автомобилей продаются дешевле <strong id="p25"></strong></li>
+        <li><span class="share">50%</span> дешевле <strong id="p50"></strong></li>
+        <li><span class="share">75%</span> дешевле <strong id="p75"></strong></li>
+      </ul>
+      <p class="hint">Половина похожих ТС продаётся в диапазоне от <span id="range-from"></span> до <span id="range-to"></span>. Это ориентир, стартовую цену выбирает управляющий.</p>
+      <p id="reliability" class="warning hidden"></p>
+
+      <h3>Рынок сейчас</h3>
+      <p class="hint">Объявления на открытом рынке для сравнения. Цены в объявлениях обычно выше цены продажи на торгах.</p>
+      <div id="market-links" class="market-links"></div>
+
+      <h3>Главные факторы</h3>
+      <ul id="factors" class="factors"></ul>
+
+      <h3>Похожие проданные лоты</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Автомобиль</th><th>Год</th><th>Дата продажи</th><th>Цена продажи</th><th></th></tr>
+          </thead>
+          <tbody id="comparables"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
