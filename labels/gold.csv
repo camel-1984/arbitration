@@ -126,3 +126,463 @@ tradeId,split,annotator,make,model,year,exclude,power_hp,engine_cc,major_defect,
 357146,test,claude,Toyota,Fortuner,2018.0,,,,,,,,,,
 357147,test,claude,Exeed,LX,2023.0,,,,,,,1.0,,,
 357166,test,claude,Kia,Rio,2021.0,,,,,,,1.0,,,марка и год только в названии лота
+372461,dev2,claude,Mercedes-Benz,,2018.0,,,,,,,,,,модель не указана (только 4MATIC)
+344241,dev2,claude,Honda,Airwave,2005.0,,110.0,1496.0,,,,,,,
+352010,dev2,claude,Geely,Coolray,2022.0,,,,,,,,,,
+358612,dev2,claude,Kia,Rio,2013.0,,107.0,1396.0,1.0,,,1.0,1.0,,проблемы с двигателем без уточнения; ограничение судебными органами
+271780,dev2,claude,Lada,2114,2007.0,,80.1,1596.0,,,,,,,код 21144
+367630,dev2,claude,Opel,Zafira,2006.0,,140.0,,,,,,,,
+333028,dev2,claude,BMW,X3,2012.0,,,,,,,1.0,,,
+241756,dev2,claude,Mercedes-Benz,GLC,2020.0,,,,,,,,,,
+331340,dev2,claude,Moskvich,3,2025.0,,,,,,,,,,
+298901,dev2,claude,Pontiac,Vibe,2004.0,,,,,,,,,,
+322686,dev2,claude,Honda,Freed,2009.0,,,,,,,,,,
+294962,dev2,claude,Porsche,Cayenne,2021.0,,,,,,,,,1.0,осмотр на станции ТО невозможен
+206729,dev2,claude,Lada,2115,2006.0,,,,1.0,1.0,,,,,состояние кузова неудовлетворительное
+271843,dev2,claude,Lada,Vesta,2021.0,,,,,,,,,,
+297731,dev2,claude,Citroen,C3,2009.0,,,,,,,1.0,,,
+284076,dev2,claude,Renault,Sandero,2014.0,,,,,,,1.0,,,
+354857,dev2,claude,Renault,Logan,2015.0,,,,,,,,,,
+325857,dev2,claude,Mitsubishi,Lancer,2005.0,,,,,,,,,,
+303130,dev2,claude,GAZ,31029,1996.0,,,,1.0,,,,,,код 310290; без колёс
+240545,dev2,claude,Chevrolet,Cruze,2011.0,,109.0,1598.0,,,,1.0,,,
+232004,dev2,claude,Nissan,Teana,2006.0,,,,,,,,,,
+221453,dev2,claude,Chevrolet,Aveo,2009.0,,,,,,,,,,
+318938,dev2,claude,Kaiyi,E5,2023.0,,,,,,,,,,
+235527,dev2,claude,Nissan,Primera,2006.0,,,,,,,,,,
+330992,dev2,claude,Toyota,Corolla Fielder,2010.0,,110.0,1496.0,,,,,,,в тексте COROLA
+256984,dev2,claude,Kia,Spectra,2008.0,,,,,,,,,,
+241204,dev2,claude,Renault,Laguna,2009.0,,,,,,,,,,
+296811,dev2,claude,Lada,Granta,2012.0,,87.0,1596.0,,,,1.0,,,
+257264,dev2,claude,Volvo,S80,2003.0,,170.0,2435.0,,,,,,,
+336873,dev2,claude,Ford,Focus,2006.0,,,,,,,,,,
+229943,dev2,claude,Citroen,C3 Picasso,2010.0,,95.0,1397.0,,,,,,,
+316928,dev2,claude,Mercedes-Benz,C-Class,2016.0,,,,,,,,,,
+326274,dev2,claude,Subaru,Impreza,2008.0,,,,,,,,,,
+203534,dev2,claude,Lifan,214802,,,,,,,,,,,в тексте только код
+353160,dev2,claude,Lada,Granta,2018.0,,,,,,,,,,
+330729,dev2,claude,Lada,Granta,2023.0,,,,,,,,,,
+306424,dev2,claude,Ford,Focus,2007.0,,115.0,1596.0,,,,,,,
+359402,dev2,claude,Lada,Granta,2014.0,,,,,,,,,,
+267735,dev2,claude,Mitsubishi,Lancer,2008.0,,,,,,,,,,
+290850,dev2,claude,Ford,Focus,2013.0,,,,,,,1.0,,,залог только в названии
+266557,dev2,claude,Skoda,Octavia,2000.0,,,,1.0,,,,,,
+295453,dev2,claude,Toyota,Camry,2013.0,,,,,,,1.0,,,
+327031,dev2,claude,Lada,2110,2001.0,,,,,,,,,,код 21102
+304103,dev2,claude,Hyundai,Solaris,2015.0,,,,,,,,,,
+361608,dev2,claude,Mercedes-Benz,GLA,2015.0,,,,1.0,,,1.0,,,в тексте GLACLASS A
+276174,dev2,claude,Lada,Granta,2020.0,,87.0,1596.0,,1.0,,1.0,,,мощность 64 кВт; требует ремонта (подвеска) - не major
+221472,dev2,claude,Lada,Kalina,2008.0,,80.9,,,,,,,,
+378657,dev2,claude,Audi,Q3,2012.0,,,,,,,,,,
+298730,dev2,claude,Lada,Kalina,2012.0,,81.6,1596.0,,,,,,,
+273343,dev2,claude,Lada,Oka,1997.0,,,,,,,,,,код 11113
+251423,dev2,claude,Hyundai,Getz,2007.0,,,,,,,,,,мощность противоречива 71.34/87
+359804,dev2,claude,Lada,Priora,2011.0,,,,,,,1.0,,,код 217030
+315788,dev2,claude,Lada,2110,2001.0,,,,,,,,,,код 21102
+334587,dev2,claude,Mitsubishi,Lancer Cedia,2002.0,,,,1.0,1.0,,,,,
+307556,dev2,claude,Peugeot,308,2010.0,,,,,,,,,,
+334299,dev2,claude,Chevrolet,Lacetti,2008.0,,,,,,,,,,
+361646,dev2,claude,Toyota,Belta,2006.0,,,,,,,1.0,,,
+361368,dev2,claude,Suzuki,SX4,2008.0,,,,,,,,,,
+206347,dev2,claude,Opel,Kadett,1985.0,,,,,,,,,,
+297533,dev2,claude,Lada,Vesta,2023.0,,,,,,,1.0,,,
+249936,dev2,claude,Chevrolet,Niva,2012.0,,,,1.0,,,,,,
+340766,dev2,claude,Lada,Granta,2023.0,,,,,,,1.0,,,залог только в названии
+205109,dev2,claude,Nissan,AD,1999.0,,,,,,,,,,
+275776,dev2,claude,Chery,Tiggo 4 Pro,2023.0,,,,,,,1.0,,,
+339749,dev2,claude,,3,2023.0,,,,,,,,,,марка замаскирована как ФИО (вероятно Москвич)
+219744,dev2,claude,Land Rover,Range Rover,2015.0,,,,,,,,,,
+254734,dev2,claude,Lada,Kalina,2018.0,,,,,,,,,,
+347174,dev2,claude,Hyundai,Accent,2007.0,,,,,,,,,,
+315142,dev2,claude,Renault,Megane,1998.0,,74.8,,1.0,,,,,,
+235080,dev2,claude,Renault,Duster,2013.0,,,,,,,1.0,,,залог только в названии
+215111,dev2,claude,Hyundai,Accent,2006.0,,,,,,,,,,
+304797,dev2,claude,Renault,Logan,2010.0,,,,,,,,,,в тексте SR (регистрационное имя Logan)
+224105,dev2,claude,Nissan,Primera,2000.0,,100.0,1597.0,,,,,,,
+342469,dev2,claude,Jaguar,XF,2013.0,,240.7,,,,,1.0,,,залог только в названии
+223121,dev2,claude,Renault,Logan Stepway,2021.0,,112.8,1598.0,,,,,,,
+290491,dev2,claude,Ford,Ka,1997.0,,60.0,1299.0,,,,,,,
+379345,dev2,claude,Mitsubishi,Outlander,2007.0,,,,,,,,,,
+367508,dev2,claude,Nissan,Note,2005.0,,,,,,,1.0,,,залог только в названии
+363050,dev2,claude,Toyota,RAV4,,,,,,,,,,,
+363003,dev2,claude,Nissan,Bluebird Sylphy,2009.0,,,,,,,,,,
+345560,dev2,claude,Ford,Kuga,2019.0,,,,,,,,,,
+342695,dev2,claude,FAW,X80,2019.0,,,,,,,,,,
+353643,dev2,claude,Lada,2113,,,,,1.0,,,,,,
+329350,dev2,claude,Lada,Priora,2009.0,,,,,,,,,,
+291703,dev2,claude,Chevrolet,Lacetti,2008.0,,109.0,,,,,,,,
+234290,dev2,claude,Renault,Logan,2006.0,,,,,,,,,,
+229805,dev2,claude,Nissan,Micra,2007.0,,,,,,,,,,
+230956,dev2,claude,Great Wall,Coolbear,2007.0,,,,,,,1.0,,,
+270897,dev2,claude,Honda,Fit,2001.0,,86.0,1339.0,,,,,,,
+236838,dev2,claude,Toyota,Starlet,1994.0,,,,,,,1.0,,,
+242390,dev2,claude,Daewoo,Matiz,2011.0,,51.0,796.0,,,,,,,
+235840,dev2,claude,Mercedes-Benz,C-Class,2005.0,,192.0,1796.0,,,,,,,С230
+216494,dev2,claude,Skoda,Rapid,2021.0,,,,,,,1.0,,,
+296676,dev2,claude,Toyota,RAV4,2003.0,,,,,,,,,,
+266972,dev2,claude,Nissan,Almera Classic,2007.0,,,,,,,,,,
+306113,dev2,claude,Nissan,Prairie Joy,1996.0,,,,,,,,,,
+314806,dev2,claude,Mitsubishi,Lancer,2005.0,,,,,,,,,,
+320741,dev2,claude,Subaru,Tribeca,2007.0,,,,,,,1.0,,,B9 Tribeca
+358503,dev2,claude,Skoda,Octavia,2020.0,,,,,,,,,,один ключ - не флаг
+276924,dev2,claude,Nissan,Note,2005.0,,,,,,,,,,
+328885,dev2,claude,Chery,Tiggo 4 Pro,2023.0,,,,,1.0,,,,,ДТП только в названии
+342053,dev2,claude,Lada,21099,2002.0,,77.0,1499.0,,,,,,,
+204555,dev2,claude,Chevrolet,Optra,2004.0,,,,,,,,,,
+246563,dev2,claude,Lada,2112,2005.0,,,,,,,,,,код 21124; мощность 65.5 без единиц
+270452,dev2,claude,Changan,SC7164B,2014.0,,112.9,1598.0,,,,1.0,,,в тексте только код
+214859,dev2,claude,Land Rover,Discovery,2011.0,,,,,,,,,,Discovery 4
+311362,dev2,claude,Chevrolet,Niva,2012.0,,,,,,,,,,
+266928,dev2,claude,Renault,Logan,2005.0,,,,,,,,,,
+300926,dev2,claude,Toyota,Sienta,2010.0,,,,,,,,,,
+219241,dev2,claude,Lada,Kalina,2010.0,,,,,,,,,,
+271322,dev2,claude,Nissan,Wingroad,2018.0,,,,,,,,,,
+358005,dev2,claude,Changan,CS35 Plus,2023.0,,,,,,,1.0,,,
+275804,dev2,claude,Lada,Priora,2013.0,,,,,,,,,,
+243707,dev2,claude,Lada,Kalina,2008.0,,,,,,,,,,
+372274,dev2,claude,Kia,Optima,2017.0,,,,,,,1.0,,,в тексте JF (OPTIMA)
+202731,dev2,claude,Citroen,C5,2007.0,,,,,,,,,,
+244026,dev2,claude,Mitsubishi,Lancer,2008.0,,,,,,,,,,
+279632,dev2,claude,Kia,Ceed,2010.0,,,,,,,,,,
+363958,dev2,claude,Volkswagen,Polo,2014.0,,,,,1.0,,,,,технически неисправен: битый
+253598,dev2,claude,Great Wall,Hover,2008.0,,,,,,,1.0,,,в тексте код CC460 KM25
+234356,dev2,claude,Kia,Ceed,2010.0,,,,,,,1.0,,,
+233723,dev2,claude,Kia,Spectra,2006.0,,,,,,,1.0,,,
+375403,dev2,claude,Volkswagen,Tiguan,2019.0,,,,,,,,,,
+308569,dev2,claude,Chery,Tiggo 7 Pro Max,2023.0,,,,,,,,,,
+270182,dev2,claude,Lada,2107,2006.0,,,,,,,,,,код 21074
+274993,dev2,claude,Hyundai,i20,2009.0,,,,,,,1.0,,,
+276434,dev2,claude,Volkswagen,Multivan,2008.0,,,,,,,,,,
+262477,dev2,claude,Chevrolet,Aveo,2011.0,,,,,,,,,,
+322063,dev2,claude,Ford,Focus,2011.0,,,,1.0,,,,,,
+339987,dev2,claude,Lada,Priora,2012.0,,,,,,,,,,
+346696,dev2,claude,Skoda,Fabia,2009.0,,,,,,,1.0,,,
+369392,dev2,claude,Hyundai,Getz,2007.0,,,,,,,1.0,1.0,,
+322179,dev2,claude,Exeed,LX,2023.0,,146.8,1498.0,,,,,,,
+339836,dev2,claude,Lada,Granta,2015.0,,,,,,,,,,
+335748,dev2,claude,Lada,2114,2012.0,,,,,1.0,,1.0,,,код 211440; ремонт подвески - не major
+263257,dev2,claude,Nissan,Teana,2009.0,,182.0,,1.0,1.0,1.0,,,,предположительные дефекты вариатора
+329892,dev2,claude,Renault,Logan,2020.0,,,,,,,,,,
+374834,dev2,claude,Lada,Granta,2020.0,,,,,,,1.0,1.0,,
+241758,dev2,claude,Lada,Kalina,2018.0,,,,,,,,,,
+355092,dev2,claude,Renault,Logan,2007.0,,,,,,,1.0,,,залог только в названии
+348408,dev2,claude,Hyundai,Accent,2006.0,,,,,,,,,,
+342566,dev2,claude,Lada,Granta,2014.0,,,,1.0,1.0,,1.0,,,
+312882,dev2,claude,Hyundai,Solaris,2014.0,,123.0,1591.0,,,,,,,
+342992,dev2,claude,Toyota,Corolla,2007.0,,124.0,1598.0,,,,1.0,,,
+299063,dev2,claude,Lada,Vesta,2020.0,,,,,,,,,,
+300729,dev2,claude,Mercedes-Benz,CLA,2014.0,,,,,,,1.0,,,
+231211,dev2,claude,Lada,XRAY,2021.0,,,,,1.0,,,,,
+305351,dev2,claude,UAZ,3303,1999.0,1.0,,,,,,,,,бортовой грузовик в категории легковых
+231898,dev2,claude,Vortex,Tingo,2011.0,,,,,,,,,,
+236698,dev2,claude,Skoda,Octavia,2013.0,,152.0,,,,,,,,мощность подписана как куб. см
+295489,dev2,claude,GAZ,3110,,,,,,,,,,,
+264165,dev2,claude,Chery,Tiggo,2007.0,,129.0,2350.0,,,,,,,в тексте SUV T11
+321855,dev2,claude,Chevrolet,Niva,2006.0,,,,,,,,,,
+283761,dev2,claude,Mazda,3,2020.0,,,,,,,,,,
+255999,dev2,claude,Mitsubishi,Lancer Cedia,2001.0,,,,1.0,1.0,,,,,
+240473,dev2,claude,Suzuki,Jimny,2004.0,,,,,,,,,,
+218269,dev2,claude,BMW,X1,2012.0,,,,,,,1.0,,,не пробовали заводить (нет ГСМ) - не major
+239102,dev2,claude,Kia,Rio,2016.0,,,,,,,1.0,1.0,,
+269330,dev2,claude,Lada,2114,2011.0,,80.9,1596.0,,,,,,,код 211440
+287825,dev2,claude,Hyundai,Santa Fe,2011.0,,,,,,,1.0,,,
+258324,dev2,claude,Infiniti,M,2008.0,,307.0,3498.0,,,,1.0,,,M35; залог только в названии; мелкий ремонт и кузовные работы - не флаги
+277712,dev2,claude,Toyota,Carina,1997.0,,,,,,,,,,
+251600,dev2,claude,Lada,2111,2002.0,,,,1.0,,,,,,код 21110
+347954,dev2,claude,Lada,Priora,2013.0,,,,,,,,,,
+355104,dev2,claude,Lada,Vesta,2023.0,,,,,,,,,,Vesta SW Cross
+361962,dev2,claude,MAZ,6430,2011.0,1.0,,,,,,,,,седельный тягач
+220627,dev2,claude,Kia,Sportage,2009.0,,,,,,,,,,в тексте JES
+262927,dev2,claude,Mercedes-Benz,V-Class,2019.0,,,,,,,,,,
+334300,dev2,claude,Dodge,Intrepid,2002.0,,,,,,,,,,
+217836,dev2,claude,Ford,C-Max,2005.0,,,,1.0,,,1.0,,,в тексте Focus C-Max
+263300,dev2,claude,Nissan,Qashqai,2008.0,,,,,,,,,,
+275240,dev2,claude,Chery,Tiggo 4 Pro,2022.0,,146.8,,,,,1.0,,,л.с. и кВт перепутаны местами
+212600,dev2,claude,Volkswagen,Jetta,2009.0,,,,,,,1.0,,,залог только в названии
+346193,dev2,claude,BAIC,X35,2023.0,,,,,,,1.0,,,
+232788,dev2,claude,Honda,CR-V,1997.0,,130.0,1972.0,,,,,,,
+240657,dev2,claude,Chevrolet,Cruze,2019.0,,,,,,,,,,
+333453,dev2,claude,Ford,Focus,2013.0,,,,,,,1.0,,,оговорка об ограничениях - не флаг
+247573,dev2,claude,Volkswagen,Passat,2008.0,,140.0,1968.0,,,,,,,
+351146,dev2,claude,Lada,Priora,2011.0,,,,,,,,,,
+274003,dev2,claude,Volvo,XC90,2008.0,,,,,,,,,,
+316303,dev2,claude,Honda,Civic,2000.0,,,,,,,,,,
+290917,dev2,claude,Kia,Rio,2020.0,,,,,,,1.0,,,залог только в названии
+232003,dev2,claude,Skoda,Octavia,2006.0,,,,,,,,,,
+325697,dev2,claude,Mitsubishi,Outlander,2007.0,,220.0,2998.0,,,,,,,л.с. и кВт перепутаны местами
+255174,dev2,claude,GAZ,69,1972.0,,,,,,,,,,
+345701,dev2,claude,Nissan,Note,2011.0,,,,,,,,,,
+318789,dev2,claude,Fiat,Albea,2009.0,,77.6,1108.0,,,,,,,
+324123,dev2,claude,Mercedes-Benz,M-Class,1998.0,,,,,,,,,,ML 320
+294841,dev2,claude,Mazda,Familia,2003.0,,110.0,,,,,,,,
+330877,dev2,claude,Haval,Jolion,2023.0,,142.8,1497.0,,,,1.0,,,
+315841,dev2,claude,Chery,Tiggo 7 Pro,2022.0,,,,,,,,,,
+314722,dev2,claude,Dodge,Caravan,2004.0,,,,,,,,,,
+329647,dev2,claude,Ford,Focus,2008.0,,145.0,,,,,1.0,,,в тексте начальная цена 333000000 (опечатка); оговорка об ограничениях
+321960,dev2,claude,Chevrolet,Aveo,2008.0,,,,,,,,,,
+272047,dev2,claude,Honda,Accord,1999.0,,,,,,,,,,
+296093,dev2,claude,Nissan,Dayz Roox,2017.0,,,,,,,,,,
+336434,dev2,claude,Kia,Ceed,2019.0,,,,,,,,,,
+258686,dev2,claude,Nissan,Almera,2001.0,,90.0,,1.0,1.0,,,,,ремонт МКПП (не работает 5 передача)
+286290,dev2,claude,Suzuki,Kei,2004.0,,,,,1.0,,1.0,1.0,,запреты ФССП
+353594,dev2,claude,Lada,4x4,2018.0,,,,,,,,,,
+332290,flags,claude,Ford,Transit,2022.0,1.0,,,,,1.0,,,,коммерческий фургон
+218074,flags,claude,Lada,2113,2012.0,,81.6,1596.0,1.0,,,,,,код 211340; ремонт коробки передач
+334012,flags,claude,Toyota,Land Cruiser Prado,2002.0,,,,,,,,,,
+333467,flags,claude,GAZ,2705,1997.0,1.0,,,,,1.0,,,,фургон; в тексте «автомобили»
+257889,flags,claude,Toyota,Duet,1998.0,,,,,,,,,,
+284434,flags,claude,Skoda,Superb,2018.0,,,,,,,,,1.0,не передан управляющему; «в неисправном состоянии» без деталей
+310475,flags,claude,Nissan,Teana,2004.0,,,,1.0,,,,,,
+239917,flags,claude,Chevrolet,Captiva,2007.0,,136.0,2405.0,,,,,,,в тексте КЛАС (регистрационное имя Captiva)
+347982,flags,claude,SsangYong,Rexton,2010.0,,,,,,,,,,неисправность полного привода и рулевой рейки - не major
+213913,flags,claude,Toyota,Platz,2005.0,,,,1.0,,1.0,,,,годные остатки без агрегатов
+229686,flags,claude,Chevrolet,Niva,2008.0,,,,,,1.0,,,,
+349260,flags,claude,Chevrolet,Lacetti,2008.0,,,,1.0,1.0,,,,,в тексте КЛАН
+254766,flags,claude,Kia,K900,2019.0,,,,,,1.0,1.0,,,в тексте RJ(K900)
+332288,flags,claude,Changan,CS35 Plus,2023.0,,,,,,,1.0,,,
+370136,flags,claude,Nissan,X-Trail,2010.0,,,,,,,,,,
+226115,flags,claude,Lada,Granta,2013.0,,82.0,1596.0,,,,,,,ДТП и запрет явно отсутствуют
+275950,flags,claude,Renault,Logan,2006.0,,,1400.0,,1.0,,1.0,,,нужны сварочные и малярные работы; объём 1.4 указан явно
+333462,flags,claude,Honda,Civic Ferio,1996.0,,130.0,1493.0,1.0,1.0,,,,,
+308239,flags,claude,Daihatsu,YRV,2000.0,,140.0,1297.0,1.0,1.0,,,,,
+233058,flags,claude,Toyota,Corolla Fielder,2007.0,,125.0,1797.0,,,,,,,
+230645,flags,claude,Lada,2114,2007.0,,80.9,1596.0,,1.0,,,,,код 21144
+253408,flags,claude,Chevrolet,Lacetti,2007.0,,,,1.0,1.0,,,,,в тексте klan (j200)
+283442,flags,claude,Lada,2114,2007.0,,,,1.0,1.0,,,,,код 21144
+245888,flags,claude,Haval,H9,2015.0,,211.0,,1.0,,,,,,не исправное; ремонтоспособно; не эксплуатируется
+342269,flags,claude,Lada,Granta,2012.0,,,,1.0,,1.0,,,,
+316074,flags,claude,Skoda,Octavia,2018.0,,,,,1.0,1.0,,1.0,,был в угоне и найден - не location_unknown
+231972,flags,claude,Ford,Focus,2003.0,,131.0,1988.0,1.0,,,,,,
+368980,flags,claude,SsangYong,Istana,2003.0,1.0,,,,,,,,,микроавтобус; залога явно нет
+204776,flags,claude,UAZ,29891,2015.0,1.0,,,,,,,,,спецавтомобиль
+349213,flags,claude,Nissan,Leaf,2016.0,,,,,,1.0,1.0,1.0,,
+340734,flags,claude,Opel,Astra,2012.0,,,,,,,1.0,,,внешние и внутренние дефекты без деталей
+290264,flags,claude,Toyota,HiAce,1991.0,,,,,,,,,,легковой минивен
+357598,flags,claude,Lada,4x4,2007.0,,,,,,1.0,,,,код 21214
+243278,flags,claude,Lada,Vesta,2019.0,,,,,,,,,,
+371283,flags,claude,FAW,V2,2013.0,,,,,,1.0,,,,
+230393,flags,claude,Lada,2114,2011.0,,80.9,1596.0,,1.0,,,,,код 211440; требуется кузовной ремонт
+341940,flags,claude,KAMAZ,45143,2009.0,1.0,,,,,,,,,два грузовика
+316198,flags,claude,Lada,Granta,2023.0,,,,,1.0,,1.0,,,
+248879,flags,claude,Nissan,Sunny,2000.0,,,,,,,,,,
+231610,flags,claude,Mitsubishi,Colt,2003.0,,,,,,1.0,,,,
+306644,flags,claude,Nissan,Note,2017.0,,,,,1.0,,,,,
+236943,flags,claude,Opel,Corsa,2007.0,,80.3,1229.0,,,,,,,незначительные недостатки кузова - не флаг
+358787,flags,claude,Citroen,C4,2012.0,,,,,1.0,,1.0,,,
+229689,flags,claude,Chevrolet,Niva,2011.0,,,,,,1.0,,,,
+298228,flags,claude,Honda,Edix,2004.0,,130.0,,1.0,1.0,,,,,
+230388,flags,claude,Suzuki,Wagon R Solio,2000.0,,88.0,1328.0,1.0,,,,,,отказ АКПП
+229243,flags,claude,Citroen,Jumper,2011.0,1.0,,,,,,,,,кузов фургона без дверей
+267129,flags,claude,Chevrolet,Cruze,2012.0,,,,,,,1.0,,,
+350990,flags,claude,Lada,Largus,2019.0,,,,,,1.0,,,,ограничений явно нет
+308757,flags,claude,Toyota,Camry,2017.0,,,,,,,,,,ПТС СТС и ключи в наличии
+340439,flags,claude,Opel,Mokka,2014.0,,,,,,,1.0,,,требуется ремонт без деталей
+216049,flags,claude,Nissan,Presage,2000.0,,150.0,,,1.0,,,,,залога явно нет
+290215,flags,claude,Toyota,Estima,2001.0,,160.0,2362.0,,1.0,,,,,оговорка о запретах - не флаг
+360708,flags,claude,Ford,EcoSport,2015.0,,,,1.0,,1.0,1.0,,,
+325675,flags,claude,Nissan,Almera,2014.0,,,,,,,,,,ограничения не найдены
+301323,flags,claude,Lada,Granta,,,,,,,,1.0,,,вмятина номера на бампере - не флаг
+205108,flags,claude,Honda,Mobilio,2007.0,,,,,,,,,,
+347369,flags,claude,UAZ,330365,2022.0,1.0,,,,,,1.0,,,бортовой грузовик
+208348,flags,claude,Honda,CR-V,1997.0,,130.0,1972.0,1.0,1.0,,,,,
+366838,flags,claude,BMW,7 Series,1983.0,,,,,,1.0,,,1.0,право требования; ТС отсутствует в натуре
+326666,test2,claude,Chevrolet,Rezzo,2007.0,,,,,,,,,,в тексте KLAU
+360994,test2,claude,Volkswagen,Jetta,2013.0,,,,,,,,,,
+365900,test2,claude,Kia,Sorento,2015.0,,,,,,,,,,в тексте XM FL (SORENTO)
+205366,test2,claude,Land Rover,Range Rover Sport,2005.0,,,,,,,,,,
+227597,test2,claude,Mitsubishi,Outlander,2012.0,,170.0,2360.0,1.0,,,,,,не на ходу только в названии
+247057,test2,claude,Mazda,Demio,2000.0,,,,,,,,,,
+269288,test2,claude,Lada,Kalina,2009.0,,,,,,,,,,
+290035,test2,claude,Dodge,Caliber,2006.0,,,,,,,,,,
+330002,test2,claude,Lada,Largus,2016.0,,,,,,,,,,
+225030,test2,claude,Mazda,6,2005.0,,,,,,,,,,
+312914,test2,claude,Mercedes-Benz,C-Class,2005.0,,,,,,,1.0,,,C230
+345835,test2,claude,Nissan,Tiida,2012.0,,,,,,,1.0,,,
+245033,test2,claude,Toyota,Corolla,2000.0,,110.0,,,,,,,,
+284250,test2,claude,BMW,X5,2012.0,,,,,,,,,,
+349743,test2,claude,Peugeot,3008,2010.0,,,,,,,,,,
+372555,test2,claude,Geely,Preface,2024.0,,,,,,,1.0,,,
+298648,test2,claude,Lada,Kalina,2008.0,,,,,,,1.0,,,небольшая ржавчина на арках; повреждений нет - не флаг
+284155,test2,claude,Peugeot,307,2007.0,,,,,,,,,,
+283026,test2,claude,Mitsubishi,Outlander,2013.0,,,,,,,,,,
+337996,test2,claude,BMW,3 Series,2018.0,,184.0,1998.0,,,,1.0,,,залог только в названии
+242974,test2,claude,Kia,Rio,2016.0,,,,,,,,,,
+210651,test2,claude,Hyundai,Accent,2006.0,,90.0,1495.0,,,,,,,
+326529,test2,claude,Ford,Focus,2003.0,,,,,,,,,,
+300367,test2,claude,Lada,Granta,2021.0,,,,,,,1.0,,,
+241865,test2,claude,Lada,XRAY,2021.0,,,,,,,1.0,,,
+231757,test2,claude,Skoda,Octavia,2012.0,,,,,,,,,,
+308804,test2,claude,Skoda,Octavia,2007.0,,,,,1.0,,,,,
+217722,test2,claude,Chevrolet,Lanos,2008.0,,,,,,,1.0,,,
+297639,test2,claude,Nissan,Almera,2017.0,,,,,,,1.0,,,
+210301,test2,claude,Toyota,Cresta,2000.0,,,,,,,1.0,,,
+277737,test2,claude,Renault,Scenic,2008.0,,,,,,,,,,ограничения не найдены
+354022,test2,claude,Skoda,Octavia,2006.0,,75.0,,,,,,,,
+329173,test2,claude,UAZ,390994,,1.0,,,,,,,,,грузопассажирский фургон
+252064,test2,claude,GAZ,2410,1986.0,,100.0,,1.0,,,,,,
+284952,test2,claude,Nissan,Qashqai,2014.0,,,,,,,,,,
+252266,test2,claude,Volkswagen,Polo,2018.0,,110.0,1598.0,,,,1.0,,,
+338133,test2,claude,Honda,Odyssey,2002.0,,,,,,,,,,
+242163,test2,claude,Mitsubishi,Lancer,2012.0,,117.0,1590.0,,,,,,,
+356279,test2,claude,Kia,Cerato,2013.0,,,,,,,,,,в тексте YD (CERATO FORTE)
+304538,test2,claude,Renault,Logan,2014.0,,,,,,,1.0,,,
+353465,test2,claude,Toyota,Corolla,1996.0,,,,,,,,,,
+320130,test2,claude,Chery,Tiggo 7 Pro Max,2023.0,,,,,,,1.0,,,
+225709,test2,claude,Volkswagen,Polo,2015.0,,105.0,1598.0,1.0,1.0,,,,,на ходу; требуется замена поршней
+211688,test2,claude,Honda,Fit,2011.0,,88.0,1339.0,,1.0,,,,,дефекты кузова
+244917,test2,claude,Lada,2115,2002.0,,,,,,,,,,код 21150
+293799,test2,claude,Chevrolet,Lanos,2007.0,,,,,,,,,,
+345538,test2,claude,Mazda,6,2008.0,,,,,,,,,,
+340948,test2,claude,Chery,Tiggo 7 Pro Max,2023.0,,,,,,,1.0,,,
+244124,test2,claude,Chery,Tiggo,2007.0,,,,,,,,,,
+252543,test2,claude,Geely,MK Cross,2012.0,,94.0,1498.0,,,,,,,
+215996,test2,claude,Mazda,3,2013.0,,105.0,1598.0,,,,,,,
+202520,test2,claude,Lada,Kalina,,,,,,,,,,,
+259096,test2,claude,Lada,4x4,2011.0,,,,,,,,,,Бронто 212140 (модификация Lada 4x4)
+263983,test2,claude,Lada,Granta,2022.0,,,,,,,,,,
+234829,test2,claude,Volkswagen,Passat,2013.0,,,,,,,1.0,,,залог только в названии; в тексте WOLKSVAGEN
+292809,test2,claude,Volkswagen,Polo,2015.0,,,,,,,,,,
+261267,test2,claude,Chevrolet,Niva,2013.0,,,,,,,1.0,1.0,,
+229420,test2,claude,Peugeot,4007,2011.0,,,,,,,,,,
+326552,test2,claude,Mitsubishi,Outlander,2008.0,,170.0,2360.0,,,,1.0,1.0,,
+211835,test2,claude,,,1967.0,1.0,,,,,,,,,М 63 - вероятно мотоцикл Урал
+332663,test2,claude,Mercedes-Benz,S-Class,2003.0,,306.0,,,,,,,,S 500
+333874,test2,claude,Volkswagen,Jetta,2013.0,,,,1.0,1.0,,,,,проблемы с двигателем и КПП
+347829,test2,claude,Skoda,Octavia,2018.0,,,,,,,,,,
+213997,test2,claude,Mitsubishi,Lancer,2008.0,,,,,,,,,,
+306536,test2,claude,Hyundai,Solaris,2013.0,,107.0,1396.0,,1.0,,,,,нет кузовных деталей; двигатель троит - не major
+214691,test2,claude,Lifan,Smily,2011.0,,,,,,,,,,код 113300
+264296,test2,claude,Ford,Mondeo,2011.0,,,,,,,,,,
+330683,test2,claude,Lada,Vesta,2017.0,,,,,,,1.0,,,
+320931,test2,claude,Lada,Granta,2020.0,,,,,,,,,,
+273537,test2,claude,Hyundai,Solaris,2017.0,,,,,,,1.0,,,
+224404,test2,claude,Lada,Vesta,2017.0,,,,,,,,,,
+326793,test2,claude,Subaru,Impreza,1997.0,,,,,,,,,,
+213933,test2,claude,GAZ,2705,2009.0,1.0,,,,,,,,,фургон
+297730,test2,claude,Lada,Granta,2023.0,,,,,,,,,,
+303172,test2,claude,Lada,Vesta,2024.0,,,,,,,,,,
+216769,test2,claude,Peugeot,308,2008.0,,,,,,,,,,
+327763,test2,claude,Kia,Soul,2012.0,,,,,,,1.0,,,
+263482,test2,claude,Peugeot,Partner,2004.0,,,,,,,,,,
+204845,test2,claude,Renault,Logan,2007.0,,,,,,,,,,
+267459,test2,claude,Lada,Granta,2013.0,,,,,,,,,,
+221897,test2,claude,Lada,2106,2004.0,,,,,,,,,,код 21061
+284065,test2,claude,Fiat,Doblo,2012.0,,78.0,2354.0,,,,,,,
+307762,test2,claude,Chery,Tiggo 8,2022.0,,,,,,,1.0,,,
+228695,test2,claude,Skoda,Octavia,2010.0,,,,,,,,,,Octavia Tour
+296154,test2,claude,Nissan,Vanette,2006.0,,,,,,,,,,
+253263,test2,claude,Mazda,3,2006.0,,,,,,,1.0,1.0,,
+269633,test2,claude,Nissan,Almera,1997.0,,,,,,,,,,
+314869,test2,claude,Toyota,RAV4,2016.0,,,,,,,,,,
+270923,test2,claude,Nissan,Teana,2003.0,,,,,,,1.0,,,
+343667,test2,claude,Toyota,Corolla Fielder,2019.0,,,,,,,,,,
+376596,test2,claude,Jetour,Dashing,2023.0,,,,,,,,,,
+328226,test2,claude,Lada,Priora,2009.0,,,,,,,,,,
+336733,test2,claude,BMW,X6,2010.0,,,,,,,1.0,,,
+357776,test2,claude,Moskvich,3,2023.0,,,,,,,,,,
+349838,test2,claude,Kia,Ceed,2012.0,,,,,,,,,,залога явно нет
+315678,test2,claude,Nissan,Moco,2004.0,,64.0,658.0,,,,,,,
+253596,test2,claude,BYD,F3,2011.0,,,,,,,1.0,,,
+256983,test2,claude,Peugeot,206,2009.0,,,,,,,,,,
+243283,test2,claude,Lada,2110,2003.0,,89.0,1499.0,,,,,,,код 211030
+231620,test2,claude,Lada,Kalina,2007.0,,,,,,,,,,
+227775,test2,claude,Hyundai,Solaris,2011.0,,,,1.0,1.0,,,,,
+227793,test2,claude,Renault,Logan,2012.0,,,,,,,1.0,,,
+273252,test2,claude,Nissan,March,2003.0,,90.0,1240.0,,,,,,,
+313508,test2,claude,UAZ,2206,2018.0,1.0,,,1.0,,,,,,микроавтобус в разобранном виде
+242100,test2,claude,Geely,Emgrand,2012.0,,,,,,,1.0,,,
+331760,test2,claude,Renault,Logan,2010.0,,84.0,,,1.0,,,,,в тексте SR
+341292,test2,claude,Lada,4x4,2022.0,,,,,,,1.0,,,
+217964,test2,claude,Volkswagen,Polo,2018.0,,,,,,,,,,в тексте Фольгсваген
+244721,test2,claude,Lada,Kalina,2008.0,,,,1.0,,,1.0,,,
+324550,test2,claude,Skoda,Octavia,2018.0,,,,,,,,,,
+328034,test2,claude,SWM,Golf,2024.0,,,,,,,1.0,,,в тексте SWM GOLF
+273716,test2,claude,Lada,4x4,2019.0,,,,,,,1.0,,,
+226918,test2,claude,Lada,Priora,2012.0,,,,,,,,,,
+271915,test2,claude,SsangYong,Actyon,,,,,,,,,,,
+308812,test2,claude,SsangYong,Actyon,2011.0,,150.0,,,,,,,,
+311184,test2,claude,Lada,Vesta,2018.0,,106.1,1596.0,,,,1.0,,,
+230412,test2,claude,BMW,5 Series,2007.0,,272.0,2996.0,,,,,,,
+296998,test2,claude,Hyundai,Solaris,2016.0,,123.0,,,,,,,,
+329791,test2,claude,BMW,X6,2015.0,,,,,,,,,,
+320328,test2,claude,Lada,Kalina,2007.0,,80.9,1596.0,,,,,,,оговорка о запретах - не флаг
+279736,test2,claude,Daewoo,Matiz,2012.0,,,,,,,,,,
+214634,test2,claude,Volkswagen,Polo,2011.0,,105.0,,,,,,,,
+277026,test2,claude,Nissan,Qashqai,2011.0,,,,,,,,,,
+280775,test2,claude,Ford,Focus,2008.0,,,1798.0,,,,,,,
+304864,test2,claude,Lada,2113,2011.0,,80.9,1596.0,,,,,,,код 211340
+216743,test2,claude,Lada,Granta,2012.0,,,,,,,,,,
+316567,test2,claude,Toyota,Corolla,2010.0,,124.0,1598.0,,,,,,,
+251406,test2,claude,Daewoo,Nexia,2012.0,,,,,,,,,,
+343318,test2,claude,Ravon,R2,2016.0,,,,,,,,,,
+235397,test2,claude,Lada,2110,2002.0,,,,,,,,,,код 21102
+353022,test2,claude,Volvo,XC90,2007.0,,,,,,,1.0,,,
+371330,test2,claude,Peugeot,408,2014.0,,,,,,,1.0,,,повреждений явно нет
+258474,test2,claude,Kia,Ceed,2011.0,,,,,,,,,,
+330355,test2,claude,Renault,Logan,2009.0,,,,,,,,,,в тексте SR
+349692,test2,claude,Volvo,XC90,2010.0,,,,,,,1.0,,,
+352343,test2,claude,Lada,XRAY,2019.0,,,,,,,1.0,,,
+305666,test2,claude,Toyota,Celica,2002.0,,,,,,,,,,
+343221,test2,claude,Mercedes-Benz,C-Class,2010.0,,,,,,,,,,C200
+223183,test2,claude,Geely,Emgrand,2016.0,,,,1.0,,,1.0,,,EC7
+345365,test2,claude,Cadillac,SRX,2011.0,,,,,,,,,,в тексте CADI
+211416,test2,claude,Hyundai,Solaris,2019.0,,,,,,,1.0,,,
+206653,test2,claude,Volkswagen,Polo,2010.0,,,,,,,1.0,,,
+280871,test2,claude,Volkswagen,Passat,2010.0,,,,,,,,,,
+349193,test2,claude,Lada,Vesta,2017.0,,,,,,,,,,
+333596,test2,claude,Lada,Kalina,2011.0,,,,,,,,,,
+280859,test2,claude,Daewoo,Nexia,2008.0,,,,1.0,1.0,,,,,
+347955,test2,claude,BMW,X4,2014.0,,,,,,,,,,
+273185,test2,claude,Nissan,Qashqai,2011.0,,,,,,,,,,
+229519,test2,claude,Lada,2114,2003.0,,,,,,,,,,код 21140
+297946,test2,claude,Hyundai,Solaris,2019.0,,,,,,,1.0,,,
+350100,test2,claude,Ford,Fiesta,2017.0,,,,,,,,,,
+328052,test2,claude,Volkswagen,Multivan,2018.0,,,,1.0,,,,,,разукомплектован
+364889,test2,claude,Kia,Ceed,2007.0,,115.0,,,,,,,,капремонт двигателя уже сделан - не флаг
+240299,test2,claude,Toyota,Corolla,2006.0,,,,,,,1.0,,,
+259485,test2,claude,Lada,4x4,1996.0,,,,,,,,,,код 212130
+306099,test2,claude,Nissan,Qashqai,2008.0,,,,,,,,,,
+236036,test2,claude,Skoda,Octavia,2004.0,,,,,,,,,,
+238620,test2,claude,Citroen,C4,2006.0,,,,,,,,,,
+277812,test2,claude,Honda,Civic,2004.0,,,,,,,,,,
+236240,test2,claude,Lada,4x4,,,,,,,,,,,код 212140
+369191,test2,claude,Peugeot,308,2012.0,,120.0,1598.0,,,,,,,
+225467,test2,claude,Lada,Granta,2021.0,,89.7,,,,,,,,
+302844,test2,claude,Mitsubishi,Delica,1995.0,,,,,,,,,,частичная покраска - не флаг
+372052,test2,claude,Renault,Duster,2013.0,,,,,,,1.0,,,
+229779,test2,claude,,,2001.0,1.0,,,,,,,,,прицеп КМЗ 8284
+320791,test2,claude,Nissan,Liberty,2002.0,,,,,1.0,,,,,
+203658,test2,claude,Audi,A4,2011.0,,,,,,,,,,
+296960,test2,claude,Subaru,Impreza,2010.0,,,,,,,,,,
+210216,test2,claude,Ford,Focus,2008.0,,125.0,1798.0,,,,,,,
+257981,test2,claude,Kia,Rio,2015.0,,,,,,,,,,
+324234,test2,claude,Jaecoo,J7,2023.0,,,,,,,1.0,,,
+288207,test2,claude,Lada,Priora,2011.0,,,,,,,,,,
+299034,test2,claude,Nissan,Note,2018.0,,,,,,,,1.0,,
+314436,test2,claude,Skoda,Octavia,2014.0,,,,1.0,,,1.0,,,
+214445,test2,claude,Lada,Kalina,2013.0,,,,,,,,,,
+338482,test2,claude,Mazda,CX-7,2011.0,,,,,,,,,,
+214945,test2,claude,Peugeot,Partner,2008.0,,,,,,,1.0,,,
+245755,test2,claude,Lada,Niva Travel,2020.0,,,,,,,,,,LADA NIVA 212300-55 (бывшая Chevrolet Niva)
+212283,test2,claude,Kia,Spectra,2008.0,,,,,,,,,,
+247196,test2,claude,Nissan,Almera,2014.0,,,,,,,1.0,,,
+214268,test2,claude,Mercedes-Benz,C-Class,2018.0,,,,,,,,,,C180
+251809,test2,claude,Volkswagen,Multivan,1993.0,,,,,,,,,,
+328028,test2,claude,Renault,Scenic,2004.0,,,,,,,,,,
+316846,test2,claude,Honda,Civic,2009.0,,,,,,,1.0,,,
+238333,test2,claude,GAZ,2752,2010.0,1.0,,,,,,1.0,,,фургон Соболь
+266942,test2,claude,Audi,A4,2014.0,,,,,,,,,,
+332306,test2,claude,Honda,N-WGN,2014.0,,,,,,,,,,
+246339,test2,claude,Lada,4x4,1997.0,,,,,1.0,,,,,код 21310; требуется сварка и окраска кузова
+276949,test2,claude,Kia,Soul,2018.0,,,,,,,,,,
+268637,test2,claude,Ford,Focus,2014.0,,,,,,,1.0,,,
+219773,test2,claude,Lada,2114,2006.0,,,,,,,,,,код 21140
+338901,test2,claude,Mercedes-Benz,M-Class,,,,,,,,,,,ML 300; в тексте MERSEDES
+225590,test2,claude,Hyundai,Getz,2004.0,,,,,,,,,,
+254451,test2,claude,Skoda,Yeti,2012.0,,,,,,,,,,
+300163,test2,claude,Chevrolet,Niva,2006.0,,,,,,,,,,
+358937,test2,claude,Volvo,XC60,2011.0,,,,,,,,,,
+332760,test2,claude,Volkswagen,Jetta,2010.0,,102.0,,,,,,,,
+215716,test2,claude,Lada,2110,2001.0,,,,,,,,,,код 21102
+281075,test2,claude,Lada,Granta,2017.0,,,,,,,,,,
+322556,test2,claude,Chery,Tiggo 7 Pro Max,2024.0,,,,,,,1.0,1.0,,

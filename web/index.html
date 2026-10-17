@@ -3,102 +3,274 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Прогноз цены продажи</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#e8e4db">
+  <title>Цена автомобиля на торгах</title>
+  <link rel="preload" href="fonts/Onest.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/Tektur.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css?v=11">
 </head>
-<body>
-  <header class="header">
-    <h1>Прогноз цены продажи автомобиля на торгах</h1>
-    <p class="subtitle">По результатам завершённых торгов по банкротству. Ориентир для типичного автомобиля с указанными характеристиками, решение остаётся за управляющим.</p>
+<body data-mode="prepare">
+  <header class="hero">
+    <div class="hero-media" aria-hidden="true">
+      <video id="hero-video" class="hero-video" src="media/amg.mp4" poster="media/amg.jpg" muted loop playsinline preload="auto"></video>
+    </div>
+    <div class="hero-inner">
+      <h1>Начальная цена и продажа автомобиля на торгах</h1>
+      <p class="subtitle">Три ориентира по завершённым торгам по банкротству: обычная начальная цена, шанс продажи на первом аукционе и вероятная цена продажи. Решение за управляющим.</p>
+    </div>
   </header>
 
   <main class="layout">
-    <section class="card">
-      <h2>1. Описание лота</h2>
-      <label for="description" class="hint">Вставьте текст описания, характеристики будут заполнены автоматически. Проверьте и исправьте их перед оценкой.</label>
-      <textarea id="description" rows="6" placeholder="Легковой автомобиль, марка: KIA, модель: RIO, год изготовления: 2015, ..."></textarea>
-      <button type="button" id="extract-btn" class="secondary">Заполнить из описания</button>
-    </section>
+    <div class="mode-bar">
+      <div class="mode-switch" role="tablist" aria-label="Что вы делаете">
+        <span class="mode-thumb" aria-hidden="true"></span>
+        <button type="button" role="tab" aria-selected="true" data-mode="prepare">До выставления</button>
+        <button type="button" role="tab" aria-selected="false" data-mode="check">Уже на торгах</button>
+      </div>
+      <p class="mode-note prepare-only">Подбор начальной цены для нового лота.</p>
+      <p class="mode-note check-only">Оценка лота на ЦДТ.</p>
+    </div>
 
-    <form id="lot-form" class="card">
-      <h2>2. Характеристики</h2>
-      <div class="grid">
-        <label>Марка
-          <input name="make" list="makes" required autocomplete="off">
-          <datalist id="makes"></datalist>
-        </label>
-        <label>Модель
-          <input name="model" required autocomplete="off">
-        </label>
-        <label>Год выпуска
-          <input name="year" type="number" min="1960" max="2030" required>
-        </label>
-        <label>Регион
-          <input name="region" placeholder="не указан">
-        </label>
-        <label>Мощность, л.с.
-          <input name="power_hp" type="number" min="30" max="800" step="0.1" placeholder="не указана">
-        </label>
-        <label>Объём двигателя, куб. см
-          <input name="engine_cc" type="number" min="600" max="8000" placeholder="не указан">
-        </label>
+    <div class="sheet">
+      <section class="step" aria-labelledby="s1">
+        <span class="step-num" aria-hidden="true">1</span>
+        <div class="step-body prepare-only">
+          <h2 id="s1">Описание автомобиля <span class="optional">необязательно</span></h2>
+          <textarea id="description" rows="5" maxlength="20000" placeholder="Вставьте описание из описи или объявления.&#10;Например: «KIA RIO, 2015 г. в., 123 л. с., 1591 куб. см, после ДТП»"></textarea>
+          <div class="row">
+            <button type="button" id="extract-btn" class="secondary">Заполнить поля по описанию</button>
+            <p id="extract-status" class="status" role="status"></p>
+          </div>
+        </div>
+        <div class="step-body check-only">
+          <h2 id="s1-check">Ссылка на карточку лота</h2>
+          <div class="link-row">
+            <label class="field"><span class="sr-only">Ссылка на карточку лота ЦДТ</span>
+              <input id="lot-link" maxlength="300" placeholder="https://torgi.cdtrf.ru/trades/361833" autocomplete="off" inputmode="url">
+            </label>
+            <button type="button" id="link-btn" class="secondary">Загрузить</button>
+          </div>
+          <p id="link-status" class="status" role="status"></p>
+        </div>
+      </section>
+
+      <form id="lot-form" novalidate>
+        <section class="step" aria-labelledby="s2">
+          <span class="step-num" aria-hidden="true">2</span>
+          <div class="step-body">
+            <h2 id="s2">Автомобиль</h2>
+            <div class="grid two">
+              <label class="field"><span class="field-name">Марка</span>
+                <select name="make" required></select>
+              </label>
+              <label class="field"><span class="field-name">Модель</span>
+                <select name="model" required disabled></select>
+                <input name="model_other" class="hidden" maxlength="60" placeholder="впишите модель" autocomplete="off">
+              </label>
+              <label class="field"><span class="field-name">Год выпуска</span>
+                <input name="year" class="num" inputmode="numeric" maxlength="4" placeholder="не указан" required autocomplete="off">
+              </label>
+              <label class="field"><span class="field-name">Регион</span>
+                <select name="region">
+                  <option value="">не указан</option>
+                </select>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section class="step" aria-labelledby="s3">
+          <span class="step-num" aria-hidden="true">3</span>
+          <div class="step-body">
+            <h2 id="s3">Двигатель <span class="optional">необязательно</span></h2>
+            <div class="grid two">
+              <label class="field"><span class="field-name">Мощность, л.с.</span>
+                <input name="power_hp" class="num" inputmode="decimal" maxlength="6" placeholder="не указана" autocomplete="off">
+              </label>
+              <label class="field"><span class="field-name">Объём двигателя, куб. см</span>
+                <input name="engine_cc" class="num" inputmode="numeric" maxlength="5" placeholder="не указан" autocomplete="off">
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section class="step" aria-labelledby="s4">
+          <span class="step-num" aria-hidden="true">4</span>
+          <div class="step-body">
+            <h2 id="s4">Состояние и обременения</h2>
+            <div class="grid two flags">
+              <label class="check">
+                <input type="checkbox" name="major_defect">
+                <span class="check-text"><span class="check-name">Серьёзная техническая неисправность</span><small>Не на ходу, нужен ремонт двигателя или КПП, разукомплектован, годные остатки</small></span>
+              </label>
+              <label class="check">
+                <input type="checkbox" name="damaged">
+                <span class="check-text"><span class="check-name">Повреждения кузова</span><small>Следы ДТП, вмятины, коррозия, разбитые стёкла. Мелкие сколы не считаются</small></span>
+              </label>
+              <label class="check">
+                <input type="checkbox" name="no_keys_or_docs">
+                <span class="check-text"><span class="check-name">Нет ключей или документов</span><small>Нет ключей, ПТС, СТС или других документов</small></span>
+              </label>
+              <label class="check">
+                <input type="checkbox" name="location_unknown">
+                <span class="check-text"><span class="check-name">Местонахождение неизвестно</span><small>Автомобиль не передан управляющему, осмотреть его нельзя</small></span>
+              </label>
+              <label class="check">
+                <input type="checkbox" name="pledge">
+                <span class="check-text"><span class="check-name">Залог</span><small>Автомобиль в залоге у кредитора</small></span>
+              </label>
+              <label class="check">
+                <input type="checkbox" name="arrest_or_ban">
+                <span class="check-text"><span class="check-name">Арест или запрет</span><small>Арест или запрет на регистрационные действия</small></span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section class="step prepare-only" aria-labelledby="s5">
+          <span class="step-num" aria-hidden="true">5</span>
+          <div class="step-body">
+            <h2 id="s5">Цены <span class="optional">необязательно</span></h2>
+            <div class="grid two">
+              <label class="field"><span class="field-name">Начальная цена, руб.</span>
+                <input name="first_price" class="num" inputmode="numeric" maxlength="11" placeholder="не указана" autocomplete="off">
+                <span class="field-note">Если не указать, расчёт пойдёт от обычной цены.</span>
+              </label>
+              <label class="field prepare-only"><span class="field-name">Ваша оценка цены продажи, руб.</span>
+                <input name="blind_estimate" class="num" inputmode="numeric" maxlength="11" placeholder="не указана" autocomplete="off">
+                <span class="field-note">Для пилота: ваша оценка до расчёта, чтобы потом сравнить её с прогнозом.</span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <div class="submit-row">
+          <button type="submit" class="primary">Оценить</button>
+        </div>
+      </form>
+    </div>
+
+    <section id="result" class="sheet result hidden" aria-labelledby="s6" aria-live="polite" tabindex="-1">
+      <div class="print-header" id="print-header">
+        <p class="print-title">Справка: начальная цена и прогноз продажи на торгах</p>
+        <p id="print-lot"></p>
+        <p id="print-flags"></p>
+        <p class="print-meta" id="print-meta"></p>
+      </div>
+      <div class="step">
+        <span class="step-num" aria-hidden="true">6</span>
+        <div class="step-body">
+          <h2 id="s6">Начальная цена</h2>
+          <p id="demo-note" class="warning hidden">Демо-режим: сервер модели не подключён, показаны условные данные.</p>
+
+          <div class="forecast">
+            <p class="forecast-label">Обычная начальная цена для таких автомобилей</p>
+            <p class="forecast-value" id="typical-p50"></p>
+            <p class="forecast-range">У половины похожих лотов начальная цена от <span><span id="typical-from"></span> до <span id="typical-to"></span></span></p>
+          </div>
+
+          <h3>Доля продаж на первых торгах</h3>
+          <p class="hint">Варианты начальной цены и доля похожих лотов, проданных при ней на первом аукционе. Первый аукцион - около 25 дней приёма заявок; если покупателя нет, следует повторный аукцион на 10% дешевле, затем публичное предложение.<span class="screen-only prepare-only"> Выберите цену или впишите свою.</span><span class="screen-only check-only"> Нажмите на цену, чтобы увидеть прогноз.</span></p>
+          <ol class="ladder" id="ladder" aria-label="Начальная цена и доля продаж на первых торгах"></ol>
+          <form id="price-form" class="price-form prepare-only" novalidate>
+            <label class="field"><span class="field-name">Начальная цена, руб.</span>
+              <input id="chosen-price" name="chosen_price" class="num" inputmode="numeric" maxlength="11" placeholder="например: 850 000" autocomplete="off" aria-describedby="chosen-error">
+              <span class="field-error" id="chosen-error"></span>
+            </label>
+            <button type="submit" class="secondary">Рассчитать</button>
+          </form>
+          <p id="reliability" class="warning hidden"></p>
+        </div>
       </div>
 
-      <fieldset class="flags">
-        <legend>Состояние и обременения</legend>
-        <label title="Не на ходу, не заводится, требуется ремонт или замена двигателя или КПП, капитальный ремонт">
-          <input type="checkbox" name="major_defect"> Серьёзная техническая неисправность
-        </label>
-        <label title="ДТП, вмятины, коррозия, деформация, разбитые стёкла и детали. Мелкие сколы не считаются">
-          <input type="checkbox" name="damaged"> Повреждения кузова
-        </label>
-        <label title="Нет ключей, ПТС, СТС или других документов">
-          <input type="checkbox" name="no_keys_or_docs"> Нет ключей или документов
-        </label>
-        <label title="Имущество в залоге">
-          <input type="checkbox" name="pledge"> Залог
-        </label>
-        <label title="Арест, запрет на регистрационные действия, ограничения приставов">
-          <input type="checkbox" name="arrest_or_ban"> Арест или запрет
-        </label>
-        <label title="Местонахождение неизвестно, ТС не передано управляющему, осмотр невозможен">
-          <input type="checkbox" name="location_unknown"> Местонахождение неизвестно
-        </label>
-      </fieldset>
+      <div class="step">
+        <span class="step-num" aria-hidden="true">7</span>
+        <div class="step-body">
+          <h2 id="s7">При начальной цене <span id="chosen-label" class="nowrap"></span></h2>
+          <div class="grid two scenarios">
+            <div class="scenario now">
+              <p class="scenario-share" id="share-now"></p>
+              <p class="scenario-name">Продастся на первых торгах</p>
+              <p class="scenario-time" id="time-now"></p>
+              <p class="scenario-note">Не ниже начальной цены, при нескольких участниках выше.</p>
+            </div>
+            <div class="scenario later">
+              <p class="scenario-share" id="share-later"></p>
+              <p class="scenario-name">Перейдёт на повторный аукцион или публичное предложение</p>
+              <p class="scenario-time" id="time-later"></p>
+              <p class="scenario-note">Повторный аукцион на 10% дешевле, дальше цена снижается по графику.</p>
+            </div>
+          </div>
 
-      <button type="submit" class="primary">Оценить</button>
-    </form>
+          <div class="forecast sale">
+            <p class="forecast-label">Ожидаемая цена продажи</p>
+            <p class="forecast-value" id="p50-big"></p>
+            <p class="forecast-range">Половина похожих автомобилей продаётся за <span><span id="range-from"></span> - <span id="range-to"></span></span></p>
+          </div>
 
-    <section id="result" class="card hidden" aria-live="polite">
-      <h2>3. Оценка</h2>
-      <p id="demo-note" class="warning hidden">Демо-режим: сервер модели не подключён, показаны условные данные.</p>
-      <ul class="quartiles">
-        <li><span class="share">25%</span> похожих автомобилей продаются дешевле <strong id="p25"></strong></li>
-        <li><span class="share">50%</span> дешевле <strong id="p50"></strong></li>
-        <li><span class="share">75%</span> дешевле <strong id="p75"></strong></li>
-      </ul>
-      <p class="hint">Половина похожих ТС продаётся в диапазоне от <span id="range-from"></span> до <span id="range-to"></span>. Это ориентир, стартовую цену выбирает управляющий.</p>
-      <p id="reliability" class="warning hidden"></p>
+          <div class="ruler" id="ruler" aria-hidden="true">
+            <div class="ruler-top"><span class="tick-label p50" id="ruler-p50"></span></div>
+            <div class="ruler-track">
+              <div class="ruler-ticks" id="ruler-ticks"></div>
+              <div class="ruler-band" id="ruler-band"></div>
+              <div class="ruler-median" id="ruler-median"></div>
+              <div class="ruler-start hidden" id="ruler-start"></div>
+            </div>
+            <div class="ruler-bottom">
+              <span class="tick-label p25" id="ruler-p25"></span>
+              <span class="tick-label p75" id="ruler-p75"></span>
+            </div>
+          </div>
+          <p id="start-legend" class="legend hidden"><span class="start-mark" aria-hidden="true"></span>Начальная цена: <span id="start-value"></span></p>
 
-      <h3>Рынок сейчас</h3>
-      <p class="hint">Объявления на открытом рынке для сравнения. Цены в объявлениях обычно выше цены продажи на торгах.</p>
-      <div id="market-links" class="market-links"></div>
-
-      <h3>Главные факторы</h3>
-      <ul id="factors" class="factors"></ul>
-
-      <h3>Похожие проданные лоты</h3>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Автомобиль</th><th>Год</th><th>Дата продажи</th><th>Цена продажи</th><th></th></tr>
-          </thead>
-          <tbody id="comparables"></tbody>
-        </table>
+          <p class="quartiles"><strong>25%</strong> похожих автомобилей продаются дешевле <strong id="p25"></strong>, <strong>50%</strong> - дешевле <strong id="p50"></strong>, <strong>75%</strong> - дешевле <strong id="p75"></strong>.</p>
+          <p class="hint">Это статистика по похожим лотам, а не гарантия. Начальную цену выбирает управляющий.</p>
+        </div>
       </div>
+
+      <div class="step">
+        <span class="step-num" aria-hidden="true">8</span>
+        <div class="step-body">
+          <h2 id="s8">Обоснование</h2>
+          <details class="basis">
+            <summary>Рынок, факторы и похожие проданные лоты</summary>
+
+            <h3>Рынок банкротных продаж</h3>
+            <p class="market-line">Без учёта начальной цены похожие автомобили продаются за <strong id="market-from"></strong> - <strong id="market-to"></strong> (медиана <strong id="market-p50"></strong>).</p>
+
+            <h3>Что влияет на цену</h3>
+            <ul id="factors" class="factors"></ul>
+
+            <h3>Похожие проданные лоты</h3>
+            <div class="table-wrap">
+              <table class="comparables">
+                <thead>
+                  <tr><th>Автомобиль</th><th class="r">Год</th><th>Дата продажи</th><th class="r">Цена продажи</th><th><span class="sr-only">Ссылка</span></th></tr>
+                </thead>
+                <tbody id="comparables"></tbody>
+              </table>
+            </div>
+
+            <h3 class="screen-only">Объявления о продаже</h3>
+            <p class="hint screen-only">Для сравнения. Цены в объявлениях обычно выше, чем на торгах.</p>
+            <div id="market-links" class="market-links"></div>
+          </details>
+        </div>
+      </div>
+
+      <div class="result-actions">
+        <button type="button" class="secondary" id="print-btn">Скачать справку</button>
+        <p class="hint">Откроется печать: выберите «Сохранить как PDF».</p>
+      </div>
+      <div class="result-actions pilot-actions prepare-only">
+        <button type="button" class="secondary" id="pilot-save">Сохранить в журнал пилота</button>
+        <p class="hint"><span id="pilot-status" class="status" role="status">Сохранятся автомобиль, ваша оценка, начальная цена и прогноз.</span> <a href="pilot.html">Журнал пилота</a></p>
+      </div>
+      <p class="print-note">Статистика по завершённым торгам по банкротству на ЭТП ЦДТ, а не гарантия результата. Начальную цену выбирает арбитражный управляющий.</p>
     </section>
   </main>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=11"></script>
 </body>
 </html>

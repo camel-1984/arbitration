@@ -31,3 +31,19 @@ def multi_vehicle_candidates(df: pd.DataFrame) -> pd.DataFrame:
     by_text = df["lot_info"].fillna("").str.contains(MULTI_VEHICLE_RE)
     by_vin = df["n_vins"] > 1
     return df.loc[by_text | by_vin, ["tradeId", "n_vins", "lot_info"]]
+
+
+CHECK_PATTERNS = {
+    "доля в праве": r"\d\s*/\s*\d\s*дол|дол[яиюе]\s+в\s+праве",
+    "слово местонахождение": r"местонахожд",
+    "местонахождение неизвестно (регулярка флага)": r"местонахождени\w*\s+(?:не\s*известно|неизвестно|не\s+установлено)",
+    "не установлен(о)": r"не\s+установлен",
+    "неизвестн": r"неизвестн",
+    "в розыске": r"в\s+розыске",
+}
+
+
+def pattern_counts(texts: pd.Series, patterns: dict[str, str] = CHECK_PATTERNS) -> pd.DataFrame:
+    texts = texts.fillna("")
+    counts = {name: int(texts.str.contains(re.compile(p, re.I)).sum()) for name, p in patterns.items()}
+    return pd.DataFrame({"лотов": counts})

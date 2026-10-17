@@ -3,7 +3,8 @@ from pathlib import Path
 
 import pandas as pd
 
-from src.features.text import FLAG_PATTERNS, extract_frame
+from src.features import llm, text
+from src.features.text import FLAG_PATTERNS
 
 GOLD_PATH = Path("labels/gold.csv")
 CARDS_PATH = Path("data/interim/cdtrf_cards.parquet")
@@ -48,6 +49,7 @@ def flag_metrics(gold: pd.Series, pred: pd.Series) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--split", default="all", help="split name from gold.csv (dev, test, ...) or all")
+    parser.add_argument("--extractor", choices=["regex", "llm"], default="regex")
     args = parser.parse_args()
 
     texts = pd.read_parquet(CARDS_PATH, columns=["tradeId", "lot_title", "lot_info"])
@@ -55,7 +57,7 @@ def main() -> None:
     if args.split != "all":
         gold = gold[gold["split"] == args.split]
     gold = gold[gold["exclude"].fillna(0) != 1]
-    pred = extract_frame(gold)
+    pred = (llm if args.extractor == "llm" else text).extract_frame(gold)
 
     pd.set_option("display.width", 200)
     print(f"лотов: {len(gold)}\n")

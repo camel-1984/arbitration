@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#e8e4db">
+  <title>Журнал пилота</title>
+  <link rel="preload" href="fonts/Onest.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/Tektur.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css?v=7">
+</head>
+<body class="pilot-page">
+  <header class="page-head">
+    <a class="back-link" href="index.html">← К расчёту</a>
+    <h1>Журнал пилота</h1>
+    <p class="subtitle">Сохранённые расчёты. Исход и комментарий необязательны: по ссылке на лот исход можно получить с ЦДТ автоматически.</p>
+  </header>
+
+  <main class="layout">
+    <section class="sheet" aria-labelledby="summary-title">
+      <div class="step">
+        <span class="step-num" aria-hidden="true">1</span>
+        <div class="step-body">
+          <h2 id="summary-title">Итоги</h2>
+          <p id="pilot-error" class="warning hidden">Журнал недоступен: запустите start.bat и откройте http://localhost:8001.</p>
+          <div class="grid two scenarios" id="summary">
+            <div class="scenario">
+              <p class="scenario-share" id="err-manager">-</p>
+              <p class="scenario-name">Типичная ошибка вашей оценки</p>
+              <p class="scenario-note" id="err-manager-note"></p>
+            </div>
+            <div class="scenario">
+              <p class="scenario-share" id="err-model">-</p>
+              <p class="scenario-name">Типичная ошибка прогноза</p>
+              <p class="scenario-note" id="err-model-note"></p>
+            </div>
+            <div class="scenario">
+              <p class="scenario-share" id="first-predicted">-</p>
+              <p class="scenario-name">Ожидаемая доля продаж на первых торгах</p>
+              <p class="scenario-note">Среднее по прогнозам для лотов с известным исходом.</p>
+            </div>
+            <div class="scenario">
+              <p class="scenario-share" id="first-observed">-</p>
+              <p class="scenario-name">Фактическая доля продаж на первых торгах</p>
+              <p class="scenario-note" id="first-observed-note"></p>
+            </div>
+          </div>
+          <p class="hint">Типичная ошибка - медиана отклонения от цены продажи. На нескольких лотах это первые наблюдения, а не вывод.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sheet" aria-labelledby="lots-title">
+      <div class="step">
+        <span class="step-num" aria-hidden="true">2</span>
+        <div class="step-body">
+          <div class="lots-head">
+            <h2 id="lots-title">Лоты</h2>
+            <button type="button" class="secondary" id="export-btn">Скачать журнал</button>
+          </div>
+          <p id="pilot-empty" class="hint hidden">Записей пока нет. Сохраните расчёт на странице расчёта.</p>
+          <ol class="pilot-list" id="pilot-list"></ol>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="pilot.js?v=6"></script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+make,model_raw,make_new,model_new
+Toyota,Корса,Toyota,Corsa
+Toyota,Дюна,Toyota,Dyna
+Toyota,Land,Toyota,Land Cruiser
+Toyota,LC,Toyota,Land Cruiser
+Toyota,Ленд,Toyota,Land Cruiser
+Toyota,Аристо,Toyota,Aristo
+Toyota,Mark,Toyota,Mark II
+Toyota,Прогрес,Toyota,Progres
+Toyota,Raym,Toyota,Raum
+Toyota,Аква,Toyota,Aqua
+Toyota,Литайс,Toyota,Lite Ace
+Toyota,ЛИТ,Toyota,Lite Ace
+Toyota,Лайт,Toyota,Lite Ace
+Toyota,Такона,Toyota,Tacoma
+Toyota,Каролла,Toyota,Corolla
+Toyota,Кроун,Toyota,Crown
+Toyota,Спринт,Toyota,Sprinter
+Toyota,истима,Toyota,Estima
+Honda,Стрим,Honda,Stream
+Honda,Шатл,Honda,Shuttle
+Honda,Авансиер,Honda,Avancier
+Honda,Сабер,Honda,Saber
+Honda,Сэйбер,Honda,Saber
+Honda,Accor,Honda,Accord
+Honda,Лайф,Honda,Life
+Honda,Фрид,Honda,Freed
+Honda,Аскот,Honda,Ascot
+Honda,Рафага,Honda,Rafaga
+Honda,Интегра,Honda,Integra
+Honda,СР,Honda,CR-V
+Honda,CR,Honda,CR-V
+Nissan,Эльгранд,Nissan,Elgrand
+Nissan,Tina,Nissan,Teana
+Nissan,Цефиро,Nissan,Cefiro
+Nissan,Либерт,Nissan,Liberty
+Nissan,Хоми,Nissan,Homy
+Nissan,Цедрик,Nissan,Cedric
+Nissan,Джук,Nissan,Juke
+Nissan,КУБ,Nissan,Cube
+Nissan,R,Nissan,
+Mitsubishi,Каризма,Mitsubishi,Carisma
+Mitsubishi,Мираж,Mitsubishi,Mirage
+Mitsubishi,Pagero,Mitsubishi,Pajero
+Mitsubishi,Montero,Mitsubishi,Pajero
+Mitsubishi,ACX,Mitsubishi,ASX
+Mitsubishi,Топпо,Mitsubishi,Toppo
+Mitsubishi,Ек,Mitsubishi,eK
+Mitsubishi,Шариот,Mitsubishi,Chariot
+Mitsubishi,Lancer Cedia,Mitsubishi,Lancer
+Hyundai,Грандер,Hyundai,Grandeur
+Hyundai,XG300,Hyundai,Grandeur
+Hyundai,Tuscon,Hyundai,Tucson
+Hyundai,1X35,Hyundai,ix35
+Hyundai,Greta,Hyundai,Creta
+Hyundai,Avante,Hyundai,Elantra
+Hyundai,NF2,Hyundai,Sonata
+Hyundai,GK,Hyundai,Tiburon
+Hyundai,SM,Hyundai,Santa Fe
+Hyundai,Галлопер,Hyundai,Galloper
+Hyundai,АК,Hyundai,
+Kia,ТД,Kia,Cerato
+Kia,Беста,Kia,Besta
+Kia,Бoнгo3,Kia,Bongo
+Kia,Morning,Kia,Picanto
+Chevrolet,Каприз,Chevrolet,Caprice
+Chevrolet,каприс,Chevrolet,Caprice
+Chevrolet,KL1J,Chevrolet,Cruze
+Chevrolet,KL1T,Chevrolet,Aveo
+Chevrolet,212300,Chevrolet,Niva
+Chevrolet,Optra,Chevrolet,Lacetti
+Chery,T21,Chery,Tiggo 5
+Chery,S21,Chery,QQ6
+Chery,S12,Chery,Kimo
+Chery,A15,Chery,Amulet
+Chery,TIGG04,Chery,Tiggo 4
+Chery,TIGG0,Chery,Tiggo
+Chery,For,Chery,Fora
+Chery,a,Chery,
+GAZ,Газель,GAZ,GAZelle
+GAZ,Gazelle,GAZ,GAZelle
+GAZ,31100,GAZ,3110
+GAZ,2410,GAZ,24
+GAZ,Справочники,GAZ,
+GAZ,САЗ,GAZ,
+Lada,210740E0097366,Lada,2107
+Lada,211440,Lada,2114
+Lada,KS0У5L,Lada,Largus
+Lada,Grnata,Lada,Granta
+Lada,Гран,Lada,Granta
+Lada,Справочник,Lada,
+Mazda,Трибьют,Mazda,Tribute
+Mazda,BT,Mazda,BT-50
+Mazda,Протеже,Mazda,Protege
+Mazda,СХ,Mazda,
+Volkswagen,Sciricco,Volkswagen,Scirocco
+Volkswagen,Каравелла,Volkswagen,Caravelle
+Volkswagen,Таурег,Volkswagen,Touareg
+Volkswagen,2K,Volkswagen,Caddy
+Volkswagen,Кэдди,Volkswagen,Caddy
+Volkswagen,2H,Volkswagen,Amarok
+Volkswagen,T4D70XOA,Volkswagen,Transporter
+Great Wall,CC6460KM27,Great Wall,Hover
+Great Wall,CC6461KM29,Great Wall,Hover
+Great Wall,CC6461,Great Wall,Hover
+Great Wall,6461,Great Wall,Hover
+Great Wall,CC7151SMA05,Great Wall,C30
+Great Wall,CC7151AMA01,Great Wall,C30
+Great Wall,CC1031PS28,Great Wall,Wingle
+Great Wall,Иная,Great Wall,
+Geely,MR7180U1,Geely,Emgrand
+Geely,JL7152U1,Geely,MK
+Geely,Binyue,Geely,Coolray
+Changan,CS35SC7164B5,Changan,CS35
+Changan,CS,Changan,
+BYD,QCJ,BYD,F3
+BYD,QCJ7160A2,BYD,F3
+BYD,Flayer,BYD,Flyer
+Fiat,178,Fiat,Albea
+Fiat,178CYN1AALBEA,Fiat,Albea
+Fiat,FST,Fiat,
+Lifan,214802,Lifan,Solano
+Lifan,X60FL,Lifan,X60
+Ford,Лазер,Ford,Laser
+Ford,Эскейп,Ford,Escape
+Ford,Maveric,Ford,Maverick
+Ford,АФ,Ford,
+Opel,Аскона,Opel,Ascona
+Opel,Комбо,Opel,Combo
+Opel,Мервия,Opel,Meriva
+Porsche,Койен,Porsche,Cayenne
+Cadillac,GMT926,Cadillac,Escalade
+Cadillac,GMT,Cadillac,Escalade
+Chrysler,Крузер,Chrysler,PT Cruiser
+Chrysler,PT,Chrysler,PT Cruiser
+Chrysler,Себринг,Chrysler,Sebring
+Chrysler,Town,Chrysler,Town & Country
+Chrysler,Grand,Chrysler,Grand Voyager
+Pontiac,Вайб,Pontiac,Vibe
+Skoda,Фелициа,Skoda,Felicia
+Land Rover,Эвок,Land Rover,Range Rover Evoque
+Land Rover,Range,Land Rover,Range Rover
+Lexus,EC,Lexus,ES
+Daihatsu,сирион,Daihatsu,Sirion
+Daihatsu,БУН,Daihatsu,Boon
+Citroen,C,Citroen,
+Renault,VEL,Renault,Vel Satis
+Renault,публичное,Renault,
+Tesla,Групп,,
+JAC,Тагаз,JAC,
+Moskvich,21414,Moskvich,2141
+Datsun,МИ,Datsun,mi-DO
+Livan,X3PRO,Livan,X3 Pro

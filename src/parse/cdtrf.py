@@ -1,3 +1,4 @@
+import argparse
 import gzip
 import hashlib
 import html
@@ -12,7 +13,9 @@ OUT_PATH = Path("data/interim/cdtrf_cards.parquet")
 
 NUXT_RE = re.compile(r'<script[^>]*id="__NUXT_DATA__"[^>]*>(.*?)</script>', re.S)
 TAG_RE = re.compile(r"<[^>]+>")
-VIN_RE = re.compile(r"(?<![A-Z0-9А-Я])(?:VIN[\s:-]*)?([A-HJ-NPR-Z0-9АВЕКМНОРСТХ]{17})(?![A-Z0-9А-Я])")
+VIN_RE = re.compile(r"(?<![A-Za-z0-9А-Яа-я])(?:VIN[\s:-]*)?([A-HJ-NPR-Z0-9АВЕКМНОРСТХ]{17})(?![A-Za-z0-9А-Яа-я])", re.I)
+MIN_VIN_DIGITS = 3
+APARTMENT_RE = re.compile(r"\b(кв\.?|квартира)\s*№?\s*\d+\w*", re.I)
 PHONE_RE = re.compile(r"(?:\+7|\b8)[\s(-]*\d{3}[\s)-]*\d{3}[\s-]*\d{2}[\s-]*\d{2}\b")
 CYR_TO_LAT = str.maketrans("АВЕКМНОРСТХ", "ABEKMHOPCTX")
 PLATE_RE = re.compile(r"\b[АВЕКМНОРСТУХABEKMHOPCTYX]\s?\d{3}\s?[АВЕКМНОРСТУХABEKMHOPCTYX0]{2}\s?/?\s?\d{2,3}\b", re.I)
@@ -80,26 +83,53 @@ def to_number(value) -> float | None:
     return float(str(value).replace("\xa0", "").replace(" ", "").replace(",", "."))
 
 
+def _is_vin(candidate: str) -> bool:
+    return sum(ch.isdigit() for ch in candidate) >= MIN_VIN_DIGITS
+
+
+def find_vins(text: str | None) -> list[str]:
+    return [v.upper().translate(CYR_TO_LAT) for v in VIN_RE.findall(text or "") if _is_vin(v)]
+
+
 def clean_text(value: str | None) -> str | None:
     if value is None:
         return None
     text = html.unescape(TAG_RE.sub(" ", value))
-    text = VIN_RE.sub("[VIN]", text)
+    text = VIN_RE.sub(lambda m: "[VIN]" if _is_vin(m.group(1)) else m.group(0), text)
     text = PLATE_RE.sub("[НОМЕР]", text)
     text = PHONE_RE.sub("[ТЕЛЕФОН]", text)
     text = SNILS_RE.sub("[СНИЛС]", text)
     text = INN_RE.sub(lambda m: f"{m.group(1) or ''}[ИНН]", text)
     text = NAME_RE.sub("[ФИО]", text)
+    text = APARTMENT_RE.sub(lambda m: f"{m.group(1)} [НОМЕР]", text)
     return re.sub(r"\s+", " ", text).strip()
+
+
+def short_hash(text: str) -> str:
+    return hashlib.sha256(text.encode()).hexdigest()[:16]
 
 
 def debtor_key(trade: dict) -> str | None:
     inn = trade.get("debtNatINN") or trade.get("debtJurINN")
-    return hashlib.sha256(inn.encode()).hexdigest()[:16] if inn else None
+    return short_hash(inn) if inn else None
+
+
+def debtor_name_key(record: dict) -> str | None:
+    parts = [record.get(k) or "" for k in ("debtLastName", "debtFirstName", "debtMiddleName", "debtShortName")]
+    name = " ".join(" ".join(parts).lower().replace("ё", "е").split())
+    return short_hash(name) if name else None
+
+
+def title_key(title: str | None) -> str | None:
+    text = re.sub(r"[^0-9a-zа-я]", "", (title or "").lower().replace("ё", "е"))
+    return short_hash(text) if text else None
 
 
 def parse_card(path: Path) -> dict | None:
-    raw = gzip.decompress(path.read_bytes()).decode() if path.suffix == ".gz" else path.read_text()
+    return parse_html(gzip.decompress(path.read_bytes()).decode() if path.suffix == ".gz" else path.read_text())
+
+
+def parse_html(raw: str) -> dict | None:
     match = NUXT_RE.search(raw)
     if not match:
         return None
@@ -107,7 +137,7 @@ def parse_card(path: Path) -> dict | None:
     trade = next(iter(root["data"].values()))
     lot = trade["lot"]
 
-    vins = [v.translate(CYR_TO_LAT) for v in VIN_RE.findall(lot.get("lotInfo") or "")]
+    vins = find_vins(lot.get("lotInfo"))
     row = {key: trade.get(key) for key in TRADE_FIELDS}
     row.update({f"lot_{key}": lot.get(key) for key in LOT_FIELDS})
     row["lot_info"] = clean_text(lot.get("lotInfo"))
@@ -120,21 +150,34 @@ def parse_card(path: Path) -> dict | None:
     row["n_schedule_periods"] = len(lot.get("lotScheduleItems") or [])
     row["n_vins"] = len(set(vins))
     row["vin_wmi"] = vins[0][:3] if vins else None
+    row["vin_vds"] = vins[0][3:8] if vins else None
     row["vin_year_code"] = vins[0][9] if vins else None
-    row["vin_hash"] = hashlib.sha256(vins[0].encode()).hexdigest()[:16] if vins else None
+    row["vin_hash"] = short_hash(vins[0]) if vins else None
     row["debtor_key"] = debtor_key(trade)
+    row["debtor_name_key"] = debtor_name_key(trade)
+    row["title_key"] = title_key(row["lot_title"])
+    court = re.match(r"\s*[АA](\d{2,3})", trade.get("dealNum") or "")
+    row["court_code"] = court.group(1) if court else None
+    row["n_images"] = len(lot.get("images") or [])
+    inn = trade.get("arbManINN")
+    row["arbman_key"] = short_hash(inn) if inn else None
+    row["arbman_sro"] = str(trade["arbManOrgId"]) if trade.get("arbManOrgId") is not None else None
     return row
 
 
 def main() -> None:
-    paths = sorted([*CARDS_DIR.glob("*.html"), *CARDS_DIR.glob("*.html.gz")])
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--cards-dir", type=Path, default=CARDS_DIR)
+    parser.add_argument("--out", type=Path, default=OUT_PATH)
+    args = parser.parse_args()
+    paths = sorted([*args.cards_dir.glob("*.html"), *args.cards_dir.glob("*.html.gz")])
     rows = [parse_card(path) for path in paths]
     df = pd.DataFrame([row for row in rows if row])
     for column, fmt in DATE_FORMATS.items():
         df[column] = pd.to_datetime(df[column], format=fmt)
-    OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    df.to_parquet(OUT_PATH, index=False)
-    print(f"{len(df)} cards -> {OUT_PATH}, not parsed: {len(rows) - len(df)}")
+    args.out.parent.mkdir(parents=True, exist_ok=True)
+    df.to_parquet(args.out, index=False)
+    print(f"{len(df)} cards -> {args.out}, not parsed: {len(rows) - len(df)}")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,969 @@
+{
+ "makes": {
+  "Acura": [
+   "MDX"
+  ],
+  "Audi": [
+   "100",
+   "80",
+   "A1",
+   "A3",
+   "A4",
+   "A5",
+   "A6",
+   "A7",
+   "A8",
+   "A8L",
+   "Q3",
+   "Q5",
+   "Q7"
+  ],
+  "BMW": [
+   "1 Series",
+   "3 Series",
+   "4 Series",
+   "5 Series",
+   "6 Series",
+   "7 Series",
+   "X1",
+   "X3",
+   "X5",
+   "X6"
+  ],
+  "Brilliance": [
+   "V5"
+  ],
+  "BYD": [
+   "F3"
+  ],
+  "Cadillac": [
+   "Escalade"
+  ],
+  "Changan": [
+   "Alsvin",
+   "CS35",
+   "CS35 Plus",
+   "CS55 Plus",
+   "CS75",
+   "Eado",
+   "UNI-T",
+   "UNI-V"
+  ],
+  "Chery": [
+   "A19",
+   "A21",
+   "Amulet",
+   "Arrizo 8",
+   "Kimo",
+   "M11",
+   "QQ6",
+   "S18D",
+   "Tiggo",
+   "Tiggo 3",
+   "Tiggo 4",
+   "Tiggo 4 Pro",
+   "Tiggo 5",
+   "Tiggo 7 Pro",
+   "Tiggo 7 Pro Max",
+   "Tiggo 8",
+   "Tiggo 8 Pro",
+   "Tiggo 8 Pro Max",
+   "Very"
+  ],
+  "Chevrolet": [
+   "Aveo",
+   "Captiva",
+   "Cobalt",
+   "Cruze",
+   "Epica",
+   "Lacetti",
+   "Lanos",
+   "Nexia",
+   "Niva",
+   "Orlando",
+   "Rezzo",
+   "Spark",
+   "Tahoe",
+   "TrailBlazer",
+   "Viva"
+  ],
+  "Chrysler": [
+   "Pacifica",
+   "PT Cruiser"
+  ],
+  "Citroen": [
+   "Berlingo",
+   "C-Crosser",
+   "C-Elysee",
+   "C3",
+   "C3 Picasso",
+   "C4",
+   "C5",
+   "DS4",
+   "Xsara"
+  ],
+  "Daewoo": [
+   "Espero",
+   "Gentra",
+   "Matiz",
+   "Nexia"
+  ],
+  "Daihatsu": [
+   "Mira",
+   "Terios",
+   "YRV"
+  ],
+  "Datsun": [
+   "mi-DO",
+   "on-DO"
+  ],
+  "Dodge": [
+   "Caliber",
+   "Caravan",
+   "Journey",
+   "Ram",
+   "Stratus"
+  ],
+  "Exeed": [
+   "LX"
+  ],
+  "FAW": [
+   "Bestune",
+   "Besturn"
+  ],
+  "Fiat": [
+   "Albea",
+   "Doblo",
+   "Ducato",
+   "Punto"
+  ],
+  "Ford": [
+   "C-Max",
+   "EcoSport",
+   "Escape",
+   "Explorer",
+   "Fiesta",
+   "Focus",
+   "Fusion",
+   "Kuga",
+   "Mondeo",
+   "Ranger",
+   "S-Max",
+   "Tourneo",
+   "Transit"
+  ],
+  "GAZ": [
+   "24",
+   "3102",
+   "31029",
+   "3110",
+   "31105",
+   "АФ"
+  ],
+  "Geely": [
+   "Atlas",
+   "Atlas Pro",
+   "Coolray",
+   "Emgrand",
+   "GC6",
+   "MK",
+   "Monjaro",
+   "Tugella"
+  ],
+  "Great Wall": [
+   "CC",
+   "Hover",
+   "Wingle",
+   "СС"
+  ],
+  "Haval": [
+   "F7",
+   "F7x",
+   "H6",
+   "Jolion",
+   "M6"
+  ],
+  "Honda": [
+   "Accord",
+   "Airwave",
+   "Capa",
+   "Civic",
+   "Civic Ferio",
+   "CR-V",
+   "Fit",
+   "Freed",
+   "HR-V",
+   "Insight",
+   "Integra",
+   "Logo",
+   "Mobilio",
+   "Odyssey",
+   "Partner",
+   "Saber",
+   "Shuttle",
+   "Stepwgn",
+   "Stream"
+  ],
+  "Hyundai": [
+   "Accent",
+   "Creta",
+   "Elantra",
+   "Equus",
+   "Getz",
+   "Grand Starex",
+   "Grandeur",
+   "i20",
+   "i30",
+   "i40",
+   "ix35",
+   "Matrix",
+   "Santa Fe",
+   "Solaris",
+   "Sonata",
+   "Starex",
+   "Terracan",
+   "Tucson",
+   "Verna",
+   "АФ"
+  ],
+  "Infiniti": [
+   "FX",
+   "G",
+   "M",
+   "QX"
+  ],
+  "JAC": [
+   "J7",
+   "JS6",
+   "S5"
+  ],
+  "Jaecoo": [
+   "J7"
+  ],
+  "Jaguar": [
+   "X",
+   "XF"
+  ],
+  "Jeep": [
+   "Cherokee",
+   "Grand Cherokee"
+  ],
+  "Jetour": [
+   "Dashing"
+  ],
+  "Kaiyi": [
+   "E5"
+  ],
+  "Kia": [
+   "Bongo",
+   "Carens",
+   "Carnival",
+   "Ceed",
+   "Cerato",
+   "ED",
+   "K5",
+   "Optima",
+   "Picanto",
+   "Rio",
+   "Seltos",
+   "Sorento",
+   "Soul",
+   "Spectra",
+   "Sportage",
+   "Venga"
+  ],
+  "Lada": [
+   "2101",
+   "2104",
+   "2105",
+   "2106",
+   "2107",
+   "2108",
+   "2109",
+   "21099",
+   "2110",
+   "2111",
+   "2112",
+   "2113",
+   "2114",
+   "2115",
+   "4x4",
+   "Granta",
+   "Kalina",
+   "Largus",
+   "Oka",
+   "Priora",
+   "Samara",
+   "Vesta",
+   "XRAY"
+  ],
+  "Land Rover": [
+   "Discovery",
+   "Freelander",
+   "Range Rover",
+   "Range Rover Sport"
+  ],
+  "Lexus": [
+   "ES",
+   "GS",
+   "IS",
+   "LS",
+   "LX",
+   "NX",
+   "RX",
+   "X"
+  ],
+  "Lifan": [
+   "214815",
+   "Myway",
+   "Smily",
+   "Solano",
+   "X50",
+   "X60"
+  ],
+  "Mazda": [
+   "2",
+   "3",
+   "6",
+   "626",
+   "Axela",
+   "Bongo",
+   "Capella",
+   "CX-5",
+   "CX-7",
+   "CX-9",
+   "Demio",
+   "Familia",
+   "MPV",
+   "Premacy",
+   "Tribute"
+  ],
+  "Mercedes-Benz": [
+   "A-Class",
+   "B-Class",
+   "C-Class",
+   "CLA",
+   "E-Class",
+   "GL-Class",
+   "GLA",
+   "GLC",
+   "GLE",
+   "GLK-Class",
+   "GLS",
+   "M-Class",
+   "S-Class"
+  ],
+  "Mitsubishi": [
+   "Airtrek",
+   "ASX",
+   "Carisma",
+   "Chariot",
+   "Colt",
+   "Delica",
+   "Galant",
+   "Grandis",
+   "L200",
+   "Lancer",
+   "Mirage",
+   "Outlander",
+   "Outlender",
+   "Pajero",
+   "Pajero Sport",
+   "RVR",
+   "Space",
+   "Спейс"
+  ],
+  "Moskvich": [
+   "2141",
+   "3"
+  ],
+  "Nissan": [
+   "AD",
+   "Almera",
+   "Almera Classic",
+   "Avenir",
+   "Bluebird",
+   "Bluebird Sylphy",
+   "Cefiro",
+   "Cube",
+   "Dayz",
+   "Juke",
+   "Laurel",
+   "Leaf",
+   "Liberty",
+   "March",
+   "Maxima",
+   "Micra",
+   "Murano",
+   "Navara",
+   "Note",
+   "Pathfinder",
+   "Patrol",
+   "Presage",
+   "Primera",
+   "Pulsar",
+   "Qashqai",
+   "Sentra",
+   "Serena",
+   "Skyline",
+   "Sunny",
+   "Teana",
+   "Terrano",
+   "Tiida",
+   "Tino",
+   "Vanette",
+   "Wingroad",
+   "X-Trail"
+  ],
+  "Omoda": [
+   "C5",
+   "S5"
+  ],
+  "Opel": [
+   "Antara",
+   "Astra",
+   "Corsa",
+   "Frontera",
+   "Insignia",
+   "Meriva",
+   "Mokka",
+   "Omega",
+   "Vectra",
+   "Zafira"
+  ],
+  "Peugeot": [
+   "107",
+   "206",
+   "207",
+   "208",
+   "3008",
+   "301",
+   "307",
+   "308",
+   "4007",
+   "406",
+   "407",
+   "408",
+   "508",
+   "Boxer",
+   "Partner"
+  ],
+  "Pontiac": [
+   "Vibe"
+  ],
+  "Porsche": [
+   "Cayenne",
+   "Panamera"
+  ],
+  "Ravon": [
+   "Nexia",
+   "R2",
+   "R4"
+  ],
+  "Renault": [
+   "Arkana",
+   "Clio",
+   "Duster",
+   "Fluence",
+   "Kangoo",
+   "Kaptur",
+   "Koleos",
+   "Laguna",
+   "Logan",
+   "Logan Stepway",
+   "Megane",
+   "Sandero",
+   "Sandero Stepway",
+   "Scenic",
+   "Symbol"
+  ],
+  "Seat": [
+   "Leon"
+  ],
+  "Skoda": [
+   "Fabia",
+   "Karoq",
+   "Kodiaq",
+   "Octavia",
+   "Rapid",
+   "Roomster",
+   "Superb",
+   "Yeti"
+  ],
+  "SsangYong": [
+   "Actyon",
+   "Kyron",
+   "Rexton"
+  ],
+  "Subaru": [
+   "Forester",
+   "Impreza",
+   "Legacy",
+   "Tribeca"
+  ],
+  "Suzuki": [
+   "Aerio",
+   "Escudo",
+   "Grand Vitara",
+   "Jimny",
+   "Kei",
+   "Liana",
+   "Swift",
+   "SX4",
+   "Vitara",
+   "Wagon R"
+  ],
+  "Toyota": [
+   "Allion",
+   "Aqua",
+   "Auris",
+   "Avensis",
+   "Belta",
+   "Caldina",
+   "Cami",
+   "Camry",
+   "Carina",
+   "Celica",
+   "Chaser",
+   "Corolla",
+   "Corolla Fielder",
+   "Corona",
+   "Corona Premio",
+   "Corsa",
+   "Cresta",
+   "Crown",
+   "Duet",
+   "Estima",
+   "Funcargo",
+   "Gaia",
+   "Harrier",
+   "HiAce",
+   "Highlander",
+   "Hilux",
+   "Ipsum",
+   "IST",
+   "Land Cruiser",
+   "Land Cruiser Prado",
+   "Lite Ace",
+   "Mark II",
+   "Nadia",
+   "Noah",
+   "Passo",
+   "Platz",
+   "Premio",
+   "Prius",
+   "Probox",
+   "Ractis",
+   "Raum",
+   "RAV4",
+   "Rush",
+   "Sequoia",
+   "Sienna",
+   "Sprinter",
+   "Succeed",
+   "Town Ace",
+   "Verossa",
+   "Vista",
+   "Vitz",
+   "Wish",
+   "Yaris"
+  ],
+  "UAZ": [
+   "23632",
+   "29891",
+   "31512",
+   "31514",
+   "31519",
+   "Hunter",
+   "Patriot",
+   "Pickup"
+  ],
+  "Volkswagen": [
+   "Amarok",
+   "Caddy",
+   "Caravelle",
+   "Golf",
+   "Jetta",
+   "Multivan",
+   "Passat",
+   "Passat CC",
+   "Pointer",
+   "Polo",
+   "Sharan",
+   "Tiguan",
+   "Touareg",
+   "Touran",
+   "Transporter"
+  ],
+  "Volvo": [
+   "S40",
+   "S60",
+   "S80",
+   "V70",
+   "XC60",
+   "XC70",
+   "XC90"
+  ],
+  "Vortex": [
+   "Estina",
+   "Tingo"
+  ],
+  "Zotye": [
+   "T600"
+  ]
+ },
+ "regions": [
+  {
+   "id": "22",
+   "name": "Алтайский край"
+  },
+  {
+   "id": "28",
+   "name": "Амурская область"
+  },
+  {
+   "id": "29",
+   "name": "Архангельская область"
+  },
+  {
+   "id": "30",
+   "name": "Астраханская область"
+  },
+  {
+   "id": "31",
+   "name": "Белгородская область"
+  },
+  {
+   "id": "32",
+   "name": "Брянская область"
+  },
+  {
+   "id": "33",
+   "name": "Владимирская область"
+  },
+  {
+   "id": "34",
+   "name": "Волгоградская область"
+  },
+  {
+   "id": "35",
+   "name": "Вологодская область"
+  },
+  {
+   "id": "36",
+   "name": "Воронежская область"
+  },
+  {
+   "id": "79",
+   "name": "Еврейская автономная область"
+  },
+  {
+   "id": "75",
+   "name": "Забайкальский край"
+  },
+  {
+   "id": "37",
+   "name": "Ивановская область"
+  },
+  {
+   "id": "38",
+   "name": "Иркутская область"
+  },
+  {
+   "id": "7",
+   "name": "Кабардино-Балкарская Республика"
+  },
+  {
+   "id": "39",
+   "name": "Калининградская область"
+  },
+  {
+   "id": "40",
+   "name": "Калужская область"
+  },
+  {
+   "id": "41",
+   "name": "Камчатский край"
+  },
+  {
+   "id": "9",
+   "name": "Карачаево-Черкесская Республика"
+  },
+  {
+   "id": "42",
+   "name": "Кемеровская область"
+  },
+  {
+   "id": "43",
+   "name": "Кировская область"
+  },
+  {
+   "id": "44",
+   "name": "Костромская область"
+  },
+  {
+   "id": "23",
+   "name": "Краснодарский край"
+  },
+  {
+   "id": "24",
+   "name": "Красноярский край"
+  },
+  {
+   "id": "45",
+   "name": "Курганская область"
+  },
+  {
+   "id": "46",
+   "name": "Курская область"
+  },
+  {
+   "id": "47",
+   "name": "Ленинградская область"
+  },
+  {
+   "id": "48",
+   "name": "Липецкая область"
+  },
+  {
+   "id": "49",
+   "name": "Магаданская область"
+  },
+  {
+   "id": "77",
+   "name": "Москва"
+  },
+  {
+   "id": "50",
+   "name": "Московская область"
+  },
+  {
+   "id": "51",
+   "name": "Мурманская область"
+  },
+  {
+   "id": "83",
+   "name": "Ненецкий автономный округ"
+  },
+  {
+   "id": "52",
+   "name": "Нижегородская область"
+  },
+  {
+   "id": "53",
+   "name": "Новгородская область"
+  },
+  {
+   "id": "54",
+   "name": "Новосибирская область"
+  },
+  {
+   "id": "55",
+   "name": "Омская область"
+  },
+  {
+   "id": "56",
+   "name": "Оренбургская область"
+  },
+  {
+   "id": "57",
+   "name": "Орловская область"
+  },
+  {
+   "id": "58",
+   "name": "Пензенская область"
+  },
+  {
+   "id": "59",
+   "name": "Пермский край"
+  },
+  {
+   "id": "25",
+   "name": "Приморский край"
+  },
+  {
+   "id": "60",
+   "name": "Псковская область"
+  },
+  {
+   "id": "1",
+   "name": "Республика Адыгея"
+  },
+  {
+   "id": "4",
+   "name": "Республика Алтай"
+  },
+  {
+   "id": "2",
+   "name": "Республика Башкортостан"
+  },
+  {
+   "id": "3",
+   "name": "Республика Бурятия"
+  },
+  {
+   "id": "5",
+   "name": "Республика Дагестан"
+  },
+  {
+   "id": "6",
+   "name": "Республика Ингушетия"
+  },
+  {
+   "id": "8",
+   "name": "Республика Калмыкия"
+  },
+  {
+   "id": "10",
+   "name": "Республика Карелия"
+  },
+  {
+   "id": "11",
+   "name": "Республика Коми"
+  },
+  {
+   "id": "91",
+   "name": "Республика Крым"
+  },
+  {
+   "id": "12",
+   "name": "Республика Марий Эл"
+  },
+  {
+   "id": "13",
+   "name": "Республика Мордовия"
+  },
+  {
+   "id": "14",
+   "name": "Республика Саха (Якутия)"
+  },
+  {
+   "id": "15",
+   "name": "Республика Северная Осетия - Алания"
+  },
+  {
+   "id": "16",
+   "name": "Республика Татарстан"
+  },
+  {
+   "id": "17",
+   "name": "Республика Тыва"
+  },
+  {
+   "id": "19",
+   "name": "Республика Хакасия"
+  },
+  {
+   "id": "61",
+   "name": "Ростовская область"
+  },
+  {
+   "id": "62",
+   "name": "Рязанская область"
+  },
+  {
+   "id": "63",
+   "name": "Самарская область"
+  },
+  {
+   "id": "78",
+   "name": "Санкт-Петербург"
+  },
+  {
+   "id": "64",
+   "name": "Саратовская область"
+  },
+  {
+   "id": "65",
+   "name": "Сахалинская область"
+  },
+  {
+   "id": "66",
+   "name": "Свердловская область"
+  },
+  {
+   "id": "92",
+   "name": "Севастополь"
+  },
+  {
+   "id": "67",
+   "name": "Смоленская область"
+  },
+  {
+   "id": "26",
+   "name": "Ставропольский край"
+  },
+  {
+   "id": "68",
+   "name": "Тамбовская область"
+  },
+  {
+   "id": "69",
+   "name": "Тверская область"
+  },
+  {
+   "id": "70",
+   "name": "Томская область"
+  },
+  {
+   "id": "71",
+   "name": "Тульская область"
+  },
+  {
+   "id": "72",
+   "name": "Тюменская область"
+  },
+  {
+   "id": "18",
+   "name": "Удмуртская Республика"
+  },
+  {
+   "id": "73",
+   "name": "Ульяновская область"
+  },
+  {
+   "id": "27",
+   "name": "Хабаровский край"
+  },
+  {
+   "id": "86",
+   "name": "Ханты-Мансийский автономный округ - Югра"
+  },
+  {
+   "id": "74",
+   "name": "Челябинская область"
+  },
+  {
+   "id": "20",
+   "name": "Чеченская Республика"
+  },
+  {
+   "id": "21",
+   "name": "Чувашская Республика"
+  },
+  {
+   "id": "87",
+   "name": "Чукотский автономный округ"
+  },
+  {
+   "id": "89",
+   "name": "Ямало-Ненецкий автономный округ"
+  },
+  {
+   "id": "76",
+   "name": "Ярославская область"
+  }
+ ],
+ "timing_days": {
+  "first_auction": {
+   "p25": 44,
+   "p50": 52,
+   "p75": 64
+  },
+  "later": {
+   "p25": 126,
+   "p50": 153,
+   "p75": 191
+  }
+ }
+}

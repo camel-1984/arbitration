@@ -6,3 +6,5 @@ __pycache__/
 misc/
 .DS_Store
 logs/
+catboost_info/
+.impeccable/
