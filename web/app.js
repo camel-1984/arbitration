@@ -743,13 +743,16 @@ document.querySelector(".mode-switch").addEventListener("click", (event) => {
 const heroVideo = document.getElementById("hero-video");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-function syncHeroVideo(visible = true) {
-  if (visible && !reducedMotion.matches) heroVideo.play().catch(() => {});
-  else heroVideo.pause();
+function playHeroVideo() {
+  if (heroVideo.paused) heroVideo.play().catch(() => {});
 }
 
-new IntersectionObserver(([entry]) => syncHeroVideo(entry.isIntersecting)).observe(heroVideo);
-reducedMotion.addEventListener("change", () => syncHeroVideo());
+heroVideo.muted = true;
+for (const name of ["canplay", "pause", "stalled"]) heroVideo.addEventListener(name, playHeroVideo);
+document.addEventListener("visibilitychange", playHeroVideo);
+window.addEventListener("pageshow", playHeroVideo);
+for (const name of ["pointerdown", "keydown", "scroll", "touchstart"]) window.addEventListener(name, playHeroVideo, { passive: true });
+playHeroVideo();
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
