@@ -49,9 +49,9 @@ def metrics(price: pd.Series, pred: pd.DataFrame) -> dict:
     }
 
 
-def cross_validate(predict, lots: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+def cross_validate(predict, lots: pd.DataFrame, quarters=CV_QUARTERS) -> tuple[pd.DataFrame, pd.DataFrame]:
     rows, parts = [], []
-    for quarter, train, valid in time_folds(lots):
+    for quarter, train, valid in time_folds(lots, quarters):
         pred = predict(train, valid)
         rows.append({"фолд": quarter, "train": len(train), **metrics(valid["sale_price"], pred)})
         parts.append(pd.concat([valid, pred], axis=1))

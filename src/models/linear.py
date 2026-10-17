@@ -62,10 +62,19 @@ def make_model(q: float, alpha: float = ALPHA, min_frequency: int = MIN_FREQUENC
     return make_pipeline(preprocess, QuantileRegressor(quantile=q, alpha=alpha, solver="highs"))
 
 
+def fit(train: pd.DataFrame, **params) -> list:
+    x_train = features(train)
+    return [make_model(q, **params).fit(x_train, train["log_price"]) for q in QUANTILES]
+
+
+def predict_fitted(models: list, lots: pd.DataFrame) -> pd.DataFrame:
+    x = features(lots)
+    preds = [np.exp(model.predict(x)) for model in models]
+    return pd.DataFrame(np.sort(np.column_stack(preds), axis=1), index=lots.index, columns=QUANTILE_COLUMNS)
+
+
 def predict(train: pd.DataFrame, valid: pd.DataFrame, **params) -> pd.DataFrame:
-    x_train, x_valid = features(train), features(valid)
-    preds = [np.exp(make_model(q, **params).fit(x_train, train["log_price"]).predict(x_valid)) for q in QUANTILES]
-    return pd.DataFrame(np.sort(np.column_stack(preds), axis=1), index=valid.index, columns=QUANTILE_COLUMNS)
+    return predict_fitted(fit(train, **params), valid)
 
 
 def tune(lots: pd.DataFrame) -> pd.DataFrame:

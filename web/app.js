@@ -207,6 +207,8 @@ function readForm() {
     first_price: readNumber("first_price"),
   };
   FLAGS.forEach((flag) => { lot[flag] = form.elements[flag].checked ? 1 : 0; });
+  const source = current.source;
+  if (source) Object.assign(lot, { debt_type: source.debt_type ?? null, n_images: source.n_images ?? null, arbman_sro: source.arbman_sro ?? null, trade_id: source.trade_id ?? null });
   return lot;
 }
 
@@ -517,19 +519,29 @@ function renderResult(result, lot) {
   document.getElementById("market-p50").textContent = rubles.format(result.market.p50);
 
   const reliability = document.getElementById("reliability");
-  reliability.textContent = "Похожих лотов в истории мало, поэтому все оценки на этой странице ненадёжны.";
-  reliability.classList.toggle("hidden", !result.low_reliability);
+  reliability.innerHTML = "<strong>Оценки приблизительные.</strong> Продаж этой модели с близким годом выпуска в истории нет, поэтому модель опирается на машины той же марки и похожего возраста.";
+  const abstain = Boolean(result.abstain);
+  document.getElementById("s6").textContent = abstain ? "Прогноз не строим" : "Начальная цена";
+  reliability.classList.toggle("hidden", !result.low_reliability || abstain);
+  const abstainNote = document.getElementById("abstain-note");
+  document.getElementById("abstain-reason").textContent = result.abstain ?? "";
+  abstainNote.classList.toggle("hidden", !abstain);
+  ["forecast-block", "sale-step", "model-basis", "pilot-actions"].forEach((id) => {
+    document.getElementById(id).classList.toggle("hidden", abstain);
+  });
 
   document.getElementById("factors").innerHTML = result.factors.map(renderFactor).join("");
   document.getElementById("comparables").innerHTML = result.comparables.length
     ? result.comparables.map(renderComparable).join("")
     : `<tr><td colspan="5" class="empty">Похожих проданных лотов не найдено.</td></tr>`;
 
+  renumberSteps();
+  document.getElementById("result").classList.remove("hidden");
+  if (abstain) return;
   renderLadder();
   renderTiming();
   resetPilotSave();
   selectPrice(defaultPrice(result));
-  document.getElementById("result").classList.remove("hidden");
 }
 
 ladder.addEventListener("click", (event) => {
@@ -586,16 +598,9 @@ function fillPrintHeader() {
   document.getElementById("print-meta").textContent = `Расчёт от ${stamp}${current.result.demo ? ", демо-данные" : ""}.`;
 }
 
-const basis = document.querySelector(".basis");
-let basisWasOpen = false;
-
 window.addEventListener("beforeprint", () => {
-  if (!current.result) return;
-  fillPrintHeader();
-  basisWasOpen = basis.open;
-  basis.open = true;
+  if (current.result) fillPrintHeader();
 });
-window.addEventListener("afterprint", () => { basis.open = basisWasOpen; });
 document.getElementById("print-btn").addEventListener("click", () => window.print());
 
 const pilotSave = document.getElementById("pilot-save");
@@ -604,7 +609,7 @@ const PILOT_HINT = pilotStatus.textContent;
 
 function resetPilotSave() {
   pilotSave.disabled = false;
-  pilotSave.textContent = "Сохранить в журнал пилота";
+  pilotSave.textContent = "Сохранить в журнал";
   pilotStatus.textContent = PILOT_HINT;
   pilotStatus.classList.remove("error");
 }
@@ -713,7 +718,7 @@ lotLink.addEventListener("keydown", (event) => {
 
 function renumberSteps() {
   const mode = document.body.dataset.mode;
-  const visible = [...document.querySelectorAll("main .step")].filter((step) => !step.matches(mode === "check" ? ".prepare-only" : ".check-only"));
+  const visible = [...document.querySelectorAll("main .step")].filter((step) => !step.matches(mode === "check" ? ".prepare-only" : ".check-only") && !step.matches(".hidden"));
   visible.forEach((step, i) => { step.querySelector(".step-num").textContent = i + 1; });
 }
 

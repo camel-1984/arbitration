@@ -8,13 +8,14 @@
   <title>Журнал пилота</title>
   <link rel="preload" href="fonts/Onest.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/Tektur.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=16">
 </head>
 <body class="pilot-page">
   <header class="page-head">
     <a class="back-link" href="index.html">← К расчёту</a>
     <h1>Журнал пилота</h1>
     <p class="subtitle">Сохранённые расчёты. Исход и комментарий необязательны: по ссылке на лот исход можно получить с ЦДТ автоматически.</p>
+    <button type="button" class="secondary page-action hidden" id="export-btn">Скачать журнал</button>
   </header>
 
   <main class="layout">
@@ -55,10 +56,7 @@
       <div class="step">
         <span class="step-num" aria-hidden="true">2</span>
         <div class="step-body">
-          <div class="lots-head">
-            <h2 id="lots-title">Лоты</h2>
-            <button type="button" class="secondary" id="export-btn">Скачать журнал</button>
-          </div>
+          <h2 id="lots-title">Лоты</h2>
           <p id="pilot-empty" class="hint hidden">Записей пока нет. Сохраните расчёт на странице расчёта.</p>
           <ol class="pilot-list" id="pilot-list"></ol>
         </div>
@@ -66,6 +64,6 @@
     </section>
   </main>
 
-  <script src="pilot.js?v=6"></script>
+  <script src="pilot.js?v=7"></script>
 </body>
 </html>

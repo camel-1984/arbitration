@@ -555,6 +555,27 @@ button[aria-busy="true"] {
   margin: 16px 0 0;
 }
 
+.abstain {
+  padding: 20px 24px 22px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-tile);
+  background: var(--paper-2);
+}
+
+.abstain-reason {
+  max-width: 62ch;
+  font-size: 1.0625rem;
+  margin-bottom: 10px;
+  text-wrap: pretty;
+}
+
+.abstain-next {
+  max-width: 62ch;
+  color: var(--steel);
+  font-size: 0.95rem;
+  text-wrap: pretty;
+}
+
 .forecast-label {
   font-size: 0.9rem;
   color: var(--steel);
@@ -716,6 +737,12 @@ button[aria-busy="true"] {
   padding-top: 0;
 }
 
+.pilot-actions .hint a {
+  display: block;
+  width: fit-content;
+  margin-top: 4px;
+}
+
 .nowrap {
   white-space: nowrap;
 }
@@ -870,44 +897,9 @@ button[aria-busy="true"] {
   color: var(--steel);
 }
 
-.basis summary {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 20px;
-  border: 1px solid var(--graphite);
-  border-radius: 999px;
-  font-weight: 500;
-  cursor: pointer;
-  list-style: none;
-  transition: background-color 0.15s ease, color 0.15s ease;
-}
-
-.basis summary::-webkit-details-marker {
-  display: none;
-}
-
-.basis summary::after {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-right: 1.6px solid currentColor;
-  border-bottom: 1.6px solid currentColor;
-  transform: translateY(-2px) rotate(45deg);
-  transition: transform 0.2s var(--ease-out);
-}
-
-.basis[open] summary::after {
-  transform: translateY(2px) rotate(-135deg);
-}
-
-.basis summary:hover {
-  background: var(--graphite);
-  color: var(--paper);
-}
-
-.basis > h3:first-of-type {
-  margin-top: 28px;
+#model-basis > h3:first-child,
+#model-basis.hidden + h3 {
+  margin-top: 0;
 }
 
 .market-line {
@@ -965,6 +957,10 @@ button[aria-busy="true"] {
 
 .back-link:hover {
   text-decoration: underline;
+}
+
+.page-action {
+  margin-top: 22px;
 }
 
 .pilot-page .layout {
@@ -1066,14 +1062,6 @@ button[aria-busy="true"] {
 .pilot-outcome input[type="date"] {
   width: 100%;
   height: 44px;
-}
-
-.lots-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 12px;
-  flex-wrap: wrap;
 }
 
 .pilot-car a {
@@ -1469,8 +1457,6 @@ a {
   textarea,
   .check,
   .market-card,
-  .basis summary,
-  .basis summary::after,
   .mode-thumb,
   .mode-switch button {
     transition: none;
@@ -1498,7 +1484,6 @@ a {
   .layout > .sheet:not(.result),
   .price-form,
   .result-actions,
-  .basis summary,
   .market-links,
   .screen-only,
   .comparables td:last-child,

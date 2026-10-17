@@ -126,6 +126,7 @@ function renderEntry(entry) {
 
 function render() {
   document.getElementById("pilot-empty").classList.toggle("hidden", entries.length > 0);
+  document.getElementById("export-btn").classList.toggle("hidden", entries.length === 0);
   list.innerHTML = [...entries].reverse().map(renderEntry).join("");
   list.querySelectorAll(".pilot-entry").forEach((item) => {
     const entry = entries.find((e) => e.id === item.dataset.id);

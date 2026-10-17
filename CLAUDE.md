@@ -30,7 +30,9 @@
 - `.venv/bin/jupyter nbconvert --to notebook --execute --inplace notebooks/<name>.ipynb` - execute notebook after edits.
 - `.venv/bin/python -m src.dataset.web_catalog` - makes, models (≥3 lots) and region names → `web/catalog.json` for the form selects; rerun after rebuilding the dataset.
 - Web preview: launch config `web` in `.claude/launch.json` (http.server on 8000, `--directory web`); opening `web/index.html` directly loads as data: URL without `app.js`.
-- `PYTHONPATH=. .venv/bin/python -m uvicorn src.api.app:app --port 8001` - FastAPI (`src/api/app.py`): serves `web/`, `/api/extract` (regex), pilot journal `/api/pilot` in `data/pilot/journal.json`; `/api/predict` is 501 until models are saved. The launch config `app` hangs (the preview helper never starts the venv python): run uvicorn via Bash in background and open `preview_start` with `url: http://localhost:8001`.
+- `caffeinate -i .venv/bin/python -m src.models.train_final` - fit all three models on all data (including 2026) → `models/bundle.joblib` + `models/history.parquet` (comparables), tracked in git for the pilot; ~15 min, background. Rerun after rebuilding datasets.
+- `.venv/bin/python -m src.models.final_test` - the one-time 2026 test (journal 35, done 2026-10-17, `logs/final_test.log`, predictions in `data/final_test/`); do not rerun to pick models.
+- `PYTHONPATH=. .venv/bin/python -m uvicorn src.api.app:app --port 8001` - FastAPI (`src/api/app.py`): serves `web/`, `/api/extract` (regex), pilot journal `/api/pilot` in `data/pilot/journal.json`; `/api/predict` uses saved models (`src/models/serve.py`, loaded on the first request; 501 and demo mode in the page if `models/` is missing; restart uvicorn after retraining). The launch config `app` hangs (the preview helper never starts the venv python): run uvicorn via Bash in background and open `preview_start` with `url: http://localhost:8001`.
 
 # Gotchas
 
@@ -42,7 +44,8 @@
 - If `preview_start` with config `web` fails because port 8000 is busy (another session's server), open it with `preview_start` + `url: http://localhost:8000`; `curl` to localhost does not work from the Bash sandbox.
 - `lot_regionID` = federal subject code (77 Moscow, 66 Sverdlovsk); the court code in `dealNum` («А40») maps to it, see `add_region` in `build.py`.
 - Gold splits: tune regex only on `dev2` and `flags`; `dev`/`test` are overfit; `test2` was used for the regex vs Qwen comparison (gold values seen) - any further extractor tuning needs a new holdout.
-- Lots published from 2026-01-01 are the final test set: never use them in CV or tuning. CV folds = 2025 quarters.
+- Lots published from 2026-01-01 are the final test set: never use them in CV or tuning. CV folds = 2025 quarters. The test was run once on 2026-10-17 (journal 35): any further model change is validated on CV only, and the 2026 numbers stay as reported.
+- Models expose `fit` / `predict_fitted` (linear, catboost_model, ensemble); `predict(train, valid)` = both, used by CV. Serving and `train_final` use the split form.
 - Sale stage (auction / public offering) and result fields are never features; stage is only for breakdowns or as a target of auxiliary models. The start price of the stage at which the lot sold is not a feature; only the FIRST-auction start price (`first_price`) is, and only in the `with_start` model.
 - Honest CV: a fold trains only on lots sold before the quarter start (`sold_at` in `evaluate.py`); any new split or calibration must respect it.
 - After changing a model, recompute the corridor coefficients `WIDTH_K` in `ensemble.py` (sequential scheme, journal 12); after rebuilding the dataset, rerun `src.dataset.web_catalog`.

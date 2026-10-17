@@ -8,7 +8,7 @@
   <title>Цена автомобиля на торгах</title>
   <link rel="preload" href="fonts/Onest.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/Tektur.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=11">
+  <link rel="stylesheet" href="style.css?v=16">
 </head>
 <body data-mode="prepare">
   <header class="hero">
@@ -71,7 +71,7 @@
               <label class="field"><span class="field-name">Год выпуска</span>
                 <input name="year" class="num" inputmode="numeric" maxlength="4" placeholder="не указан" required autocomplete="off">
               </label>
-              <label class="field"><span class="field-name">Регион</span>
+              <label class="field"><span class="field-name">Регион<span class="optional">необязательно</span></span>
                 <select name="region">
                   <option value="">не указан</option>
                 </select>
@@ -163,28 +163,34 @@
         <div class="step-body">
           <h2 id="s6">Начальная цена</h2>
           <p id="demo-note" class="warning hidden">Демо-режим: сервер модели не подключён, показаны условные данные.</p>
-
-          <div class="forecast">
-            <p class="forecast-label">Обычная начальная цена для таких автомобилей</p>
-            <p class="forecast-value" id="typical-p50"></p>
-            <p class="forecast-range">У половины похожих лотов начальная цена от <span><span id="typical-from"></span> до <span id="typical-to"></span></span></p>
+          <div id="abstain-note" class="abstain hidden">
+            <p class="abstain-reason" id="abstain-reason"></p>
+            <p class="abstain-next">Цену придётся оценить вручную.</p>
           </div>
 
-          <h3>Доля продаж на первых торгах</h3>
-          <p class="hint">Варианты начальной цены и доля похожих лотов, проданных при ней на первом аукционе. Первый аукцион - около 25 дней приёма заявок; если покупателя нет, следует повторный аукцион на 10% дешевле, затем публичное предложение.<span class="screen-only prepare-only"> Выберите цену или впишите свою.</span><span class="screen-only check-only"> Нажмите на цену, чтобы увидеть прогноз.</span></p>
-          <ol class="ladder" id="ladder" aria-label="Начальная цена и доля продаж на первых торгах"></ol>
-          <form id="price-form" class="price-form prepare-only" novalidate>
-            <label class="field"><span class="field-name">Начальная цена, руб.</span>
-              <input id="chosen-price" name="chosen_price" class="num" inputmode="numeric" maxlength="11" placeholder="например: 850 000" autocomplete="off" aria-describedby="chosen-error">
-              <span class="field-error" id="chosen-error"></span>
-            </label>
-            <button type="submit" class="secondary">Рассчитать</button>
-          </form>
+          <div id="forecast-block">
+            <div class="forecast">
+              <p class="forecast-label">Обычная начальная цена для таких автомобилей</p>
+              <p class="forecast-value" id="typical-p50"></p>
+              <p class="forecast-range">У половины похожих лотов начальная цена от <span><span id="typical-from"></span> до <span id="typical-to"></span></span></p>
+            </div>
+
+            <h3>Доля продаж на первых торгах</h3>
+            <p class="hint">Варианты начальной цены и доля похожих лотов, проданных при ней на первом аукционе. Первый аукцион - около 25 дней приёма заявок; если покупателя нет, следует повторный аукцион на 10% дешевле, затем публичное предложение.<span class="screen-only prepare-only"> Выберите цену или впишите свою.</span><span class="screen-only check-only"> Нажмите на цену, чтобы увидеть прогноз.</span></p>
+            <ol class="ladder" id="ladder" aria-label="Начальная цена и доля продаж на первых торгах"></ol>
+            <form id="price-form" class="price-form prepare-only" novalidate>
+              <label class="field"><span class="field-name">Начальная цена, руб.</span>
+                <input id="chosen-price" name="chosen_price" class="num" inputmode="numeric" maxlength="11" placeholder="например: 850 000" autocomplete="off" aria-describedby="chosen-error">
+                <span class="field-error" id="chosen-error"></span>
+              </label>
+              <button type="submit" class="secondary">Рассчитать</button>
+            </form>
+          </div>
           <p id="reliability" class="warning hidden"></p>
         </div>
       </div>
 
-      <div class="step">
+      <div class="step" id="sale-step">
         <span class="step-num" aria-hidden="true">7</span>
         <div class="step-body">
           <h2 id="s7">При начальной цене <span id="chosen-label" class="nowrap"></span></h2>
@@ -233,14 +239,14 @@
         <span class="step-num" aria-hidden="true">8</span>
         <div class="step-body">
           <h2 id="s8">Обоснование</h2>
-          <details class="basis">
-            <summary>Рынок, факторы и похожие проданные лоты</summary>
+          <div class="basis">
+            <div id="model-basis">
+              <h3>Рынок банкротных продаж</h3>
+              <p class="market-line">Такие машины обычно уходят за <strong id="market-from"></strong> - <strong id="market-to"></strong> (медиана <strong id="market-p50"></strong>), независимо от начальной цены.</p>
 
-            <h3>Рынок банкротных продаж</h3>
-            <p class="market-line">Без учёта начальной цены похожие автомобили продаются за <strong id="market-from"></strong> - <strong id="market-to"></strong> (медиана <strong id="market-p50"></strong>).</p>
-
-            <h3>Что влияет на цену</h3>
-            <ul id="factors" class="factors"></ul>
+              <h3>Что влияет на цену</h3>
+              <ul id="factors" class="factors"></ul>
+            </div>
 
             <h3>Похожие проданные лоты</h3>
             <div class="table-wrap">
@@ -255,7 +261,7 @@
             <h3 class="screen-only">Объявления о продаже</h3>
             <p class="hint screen-only">Для сравнения. Цены в объявлениях обычно выше, чем на торгах.</p>
             <div id="market-links" class="market-links"></div>
-          </details>
+          </div>
         </div>
       </div>
 
@@ -263,14 +269,14 @@
         <button type="button" class="secondary" id="print-btn">Скачать справку</button>
         <p class="hint">Откроется печать: выберите «Сохранить как PDF».</p>
       </div>
-      <div class="result-actions pilot-actions prepare-only">
-        <button type="button" class="secondary" id="pilot-save">Сохранить в журнал пилота</button>
+      <div class="result-actions pilot-actions prepare-only" id="pilot-actions">
+        <button type="button" class="secondary" id="pilot-save">Сохранить в журнал</button>
         <p class="hint"><span id="pilot-status" class="status" role="status">Сохранятся автомобиль, ваша оценка, начальная цена и прогноз.</span> <a href="pilot.html">Журнал пилота</a></p>
       </div>
       <p class="print-note">Статистика по завершённым торгам по банкротству на ЭТП ЦДТ, а не гарантия результата. Начальную цену выбирает арбитражный управляющий.</p>
     </section>
   </main>
 
-  <script src="app.js?v=11"></script>
+  <script src="app.js?v=16"></script>
 </body>
 </html>

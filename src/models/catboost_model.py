@@ -32,10 +32,17 @@ def make_model(**params) -> CatBoostRegressor:
                              thread_count=-1, **{**PARAMS, **params})
 
 
+def fit(train: pd.DataFrame, with_start: bool = False, **params) -> CatBoostRegressor:
+    return make_model(**params).fit(Pool(features(train, with_start), train["log_price"], cat_features=CATEGORICAL))
+
+
+def predict_fitted(model: CatBoostRegressor, lots: pd.DataFrame, with_start: bool = False) -> pd.DataFrame:
+    raw = model.predict(Pool(features(lots, with_start), cat_features=CATEGORICAL))
+    return pd.DataFrame(np.sort(np.exp(raw), axis=1), index=lots.index, columns=QUANTILE_COLUMNS)
+
+
 def predict(train: pd.DataFrame, valid: pd.DataFrame, with_start: bool = False, **params) -> pd.DataFrame:
-    model = make_model(**params).fit(Pool(features(train, with_start), train["log_price"], cat_features=CATEGORICAL))
-    raw = model.predict(Pool(features(valid, with_start), cat_features=CATEGORICAL))
-    return pd.DataFrame(np.sort(np.exp(raw), axis=1), index=valid.index, columns=QUANTILE_COLUMNS)
+    return predict_fitted(fit(train, with_start, **params), valid, with_start)
 
 
 def tune(lots: pd.DataFrame) -> pd.DataFrame:

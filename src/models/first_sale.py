@@ -26,9 +26,9 @@ CATBOOST_WEIGHT = 0.5
 SEED = 42
 
 
-def read_first(path: Path = FIRST_PATH) -> pd.DataFrame:
+def read_first(path: Path = FIRST_PATH, until=TEST_START) -> pd.DataFrame:
     lots = pd.read_parquet(path)
-    return lots[lots["requestTimeBegin"] < TEST_START].reset_index(drop=True)
+    return lots if until is None else lots[lots["requestTimeBegin"] < until].reset_index(drop=True)
 
 
 def market_quantiles(market_train: pd.DataFrame, lots: pd.DataFrame) -> np.ndarray:
@@ -39,13 +39,17 @@ def with_market(lots: pd.DataFrame, log_q: np.ndarray) -> pd.DataFrame:
     return lots.assign(start_ratio=np.log(lots["first_price"]) - log_q[:, 1], market_spread=log_q[:, 2] - log_q[:, 0])
 
 
-def add_market_ratio(train: pd.DataFrame, valid: pd.DataFrame, market_train: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+def oof_market_ratio(train: pd.DataFrame, market_train: pd.DataFrame) -> pd.DataFrame:
     oof = np.full((len(train), 3), np.nan)
     groups = train["debtor_name_key"].fillna("нет")
     for _, held_idx in GroupKFold(MARKET_FOLDS).split(train, groups=groups):
         held = train.iloc[held_idx]
         oof[held_idx] = market_quantiles(market_train[~market_train["debtor_name_key"].isin(held["debtor_name_key"])], held)
-    return with_market(train, oof), with_market(valid, market_quantiles(market_train, valid))
+    return with_market(train, oof)
+
+
+def add_market_ratio(train: pd.DataFrame, valid: pd.DataFrame, market_train: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+    return oof_market_ratio(train, market_train), with_market(valid, market_quantiles(market_train, valid))
 
 
 def make_logistic():
@@ -128,9 +132,9 @@ def calibration(y: pd.Series, p: pd.Series, bins: int = 10) -> pd.DataFrame:
     return table
 
 
-def cross_validate(first: pd.DataFrame, sold: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+def cross_validate(first: pd.DataFrame, sold: pd.DataFrame, quarters=CV_QUARTERS) -> tuple[pd.DataFrame, pd.DataFrame]:
     rows, parts = [], []
-    for quarter, train, valid in time_folds(first, sold):
+    for quarter, train, valid in time_folds(first, sold, quarters):
         p = predict_proba(fit(train), valid)
         base_rate = train.loc[train["requestTimeBegin"] >= pd.Period(quarter, "Q").start_time - pd.DateOffset(months=12), "sold_first"].mean()
         p["base rate"] = base_rate

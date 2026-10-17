@@ -16,6 +16,7 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator
 from src.collect.cdtrf import BASE_URL, PASSENGER_CATEGORY, USER_AGENT
 from src.features.normalize import _apply_aliases
 from src.features.text import extract_features
+from src.models import serve
 from src.parse.cdtrf import parse_html
 
 WEB_DIR = Path("web")
@@ -33,6 +34,8 @@ FIELDS = ["make", "model", "year", "power_hp", "engine_cc", "major_defect", "dam
 
 app = FastAPI(title="Цена на торгах")
 journal_lock = threading.Lock()
+models_lock = threading.Lock()
+models: dict = {}
 
 
 def lot_url(value: str | None) -> str | None:
@@ -63,6 +66,10 @@ class Lot(BaseModel):
     pledge: Flag = 0
     arrest_or_ban: Flag = 0
     location_unknown: Flag = 0
+    debt_type: str | None = Field(default=None, pattern=r"^[A-Za-z]{1,10}$")
+    n_images: int | None = Field(default=None, ge=0, le=500)
+    arbman_sro: str | None = Field(default=None, pattern=r"^\d{1,12}$")
+    trade_id: int | None = Field(default=None, ge=1, le=999_999_999)
 
 
 class PilotEntry(BaseModel):
@@ -143,14 +150,24 @@ def extract(request: ExtractRequest) -> dict:
         first_price=card["lot_priceBegin"] if is_auction else None,
         description="\n".join(filter(None, [card["lot_title"], card["lot_info"]])),
         source={"trade_id": card["tradeId"], "trade_type": card["tradeTypeDescription"], "url": f"{BASE_URL}/trades/{card['tradeId']}",
-                "passenger": list(card["lot_categoryIDs"] or []) == [PASSENGER_CATEGORY]},
+                "passenger": list(card["lot_categoryIDs"] or []) == [PASSENGER_CATEGORY], "debt_type": card["debtType"],
+                "n_images": card["n_images"], "arbman_sro": card["arbman_sro"]},
     )
     return result
 
 
+def _models() -> dict:
+    with models_lock:
+        if not models:
+            if not serve.BUNDLE_PATH.exists():
+                raise HTTPException(501, "модели ещё не обучены: запустите python -m src.models.train_final")
+            models.update(serve.load())
+    return models
+
+
 @app.post("/api/predict")
-def predict() -> None:
-    raise HTTPException(501, "модели ещё не подключены")
+def predict(lot: Lot) -> dict:
+    return serve.predict(_models(), lot.model_dump())
 
 
 def _read_journal() -> list[dict]:
@@ -201,4 +218,13 @@ def pilot_outcome(entry_id: Annotated[str, PathParam(pattern=r"^[0-9a-f]{8}$")],
     return record
 
 
-app.mount("/", StaticFiles(directory=WEB_DIR, html=True), name="web")
+class WebFiles(StaticFiles):
+    """The browser revalidates every file on load, so an update shows up without a hard reload."""
+
+    def file_response(self, *args, **kwargs):
+        response = super().file_response(*args, **kwargs)
+        response.headers["Cache-Control"] = "no-cache"
+        return response
+
+
+app.mount("/", WebFiles(directory=WEB_DIR, html=True), name="web")
